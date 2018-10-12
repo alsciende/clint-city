@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Documentation</title>
+</head>
+<body>
+<div class="panel-body">
+    <fieldset class="apiCategory">
+        <legend>Characters</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-0">characters.getCharacterLevels</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-0" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the details for the levels of a specific character, up to a optional
+                        level. If no level is specified, -1: get all levels, 0: get up to the max level owned by the
+                        player (or the min level of the character if not owned).</p>Parameters:
+                        <ul>
+                            <li><u>characterID</u></li>
+                            <li><u>levelMax</u></li>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-1">characters.getCharacters</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-1" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of availables characters, with an optional list of
+                        characterIDs or an optional clanID filter and sorting options.<br>
+                        If both clanID &amp; charactersID are not provided, then the function will return all
+                        characters. CharacterIDs is prioritized over clanID.<br>
+                        sortby can be 'name', 'id', 'level', 'level_min', 'level_max', 'clan', 'clan_name', 'rarity'<br>
+                        orderby can be 'asc' or 'desc'<br>
+                        Set the maxLevels params to true if you want the fully levelled character.</p>Parameters:
+                        <ul>
+                            <li><u>charactersIDs</u></li>
+                            <li><u>clanID</u></li>
+                            <li><u>sortby</u></li>
+                            <li><u>orderby</u></li>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                            <li><u>maxLevels</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-2">characters.getClans</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-2" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the details for the list of current clans.</p>Parameters:
+                        <ul>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-3">characters.getDeckFormats</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-3" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get deck format(s) available to the players details<br>
+                        Pass an id to get one deck format, 0 for all deck formats<br>
+                        Pass a list of charactersIDs to check the validity, pass nothing, it will check the player's
+                        current deck</p>Parameters:
+                        <ul>
+                            <li><u>deckFormatID</u></li>
+                            <li><u>characterIDs</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-4">characters.getDetails</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-4" class="panel-collapse collapse">
+                    <div class="panel-body"><p>DEPRECATED - USE characters.getCharacters instead.<br>
+                        Get the details for a list of characters (pass an id or an array of ids).</p>Parameters:
+                        <ul>
+                            <li><u>charactersIDs</u></li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Collections</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-5">collections.alterCharacterDeckState</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-5" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Alter the deck state of a character in the player collection.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>characterInCollectionID</u></li>
+                            <li><u>newDeckState</u>
+                                <small>(optional, default value: [boolean false])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-6">collections.checkPresetIsStillValid</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-6" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Check if a preset is still valid.</p>Parameters:
+                        <ul>
+                            <li><u>presetID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-7">collections.copyPublicPreset</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-7" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Copy the corresponding preset ID</p>Parameters:
+                        <ul>
+                            <li><u>publicPresetID</u></li>
+                            <li><u>presetName</u></li>
+                            <li><u>setAsDeck</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-8">collections.deleteSavedPreset</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-8" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Delete one of the player saved presets.</p>Parameters:
+                        <ul>
+                            <li><u>presetID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-9">collections.getBestCharacterVariationsWithoutEvoMax</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-9" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the best variations for each character not yet owned to level max by
+                        the player.</p>Parameters:
+                        <ul>
+                            <li><u>nbItems</u></li>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-10">collections.getCharacterVariations</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-10" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the the player's varations for a specific character.</p>Parameters:
+                        <ul>
+                            <li><u>characterID</u></li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-11">collections.getClanSummary</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-11" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the the player's collection Summary for a clan or some clans (if
+                        clanID is 0).<br>
+                        @params addBestCharacter set to true to get the full properties of the best variation in the
+                        collection of the owned characters<br>
+                        @params ownedOnly set to true to get only the characters owned by the player</p>Parameters:
+                        <ul>
+                            <li><u>clanID</u></li>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                            <li><u>addBestCharacter</u></li>
+                            <li><u>ownedOnly</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-12">collections.getCollectionPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-12" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get a page of the player collection. Many parameters.<br>
+                        deckOnly : true / false<br>
+                        page : 0.. 1..<br>
+                        nbPerPage : 12, 20, 28, 36, 52 (fixed for performance reason)<br>
+                        clanID : 0 for all clans or the clanID for a specific clan<br>
+                        groupBy : all, double (only the doubles), evolve (only the evolving characters), maxed (only the
+                        maxxed characters), nodeck (only thoses out of the deck), best (only the best variation of each)<br>
+                        sortBy: clan, name, date, level, levelmax, xp<br>
+                        orderBy: asc, desc<br>
+                        search: part of of character name to filter the list</p>Parameters:
+                        <ul>
+                            <li><u>deckOnly</u>
+                                <small>(optional, default value: [boolean false])</small>
+                            </li>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 12])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>groupBy</u>
+                                <small>(optional, default value: [string "all"])</small>
+                            </li>
+                            <li><u>sortBy</u>
+                                <small>(optional, default value: [string "clan"])</small>
+                            </li>
+                            <li><u>orderBy</u>
+                                <small>(optional, default value: [string "asc"])</small>
+                            </li>
+                            <li><u>search</u>
+                                <small>(optional, default value: [string ""])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-13">collections.getDeck</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-13" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the the player's current Deck or a saved Deck if supplied a
+                        presetID</p>Parameters:
+                        <ul>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                            <li><u>presetID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-14">collections.getPresets</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-14" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the the player's current Presets list. Can parse filter the list with
+                        an optionnal deck format ID.</p>Parameters:
+                        <ul>
+                            <li><u>deckFormatID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-15">collections.getSelectionFormatsCompatibility</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-15" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the deck formats compatibility for a set of characters in
+                        collection</p>Parameters:
+                        <ul>
+                            <li><u>characterInCollectionsIDs</u>
+                                <small>(optional, default value: [array []])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-16">collections.getSummary</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-16" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the the player's collection Summary (clans and numbers of totals
+                        &amp; distincts cards per clans).</p>Parameters:
+                        <ul>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-17">collections.giveXPFromReserve</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-17" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Give all XP from the player's reserve to level up the character, or, if
+                        there is not enough to level up, all xp from the reserve.</p>Parameters:
+                        <ul>
+                            <li><u>characterInCollectionID</u></li>
+                            <li><u>battleID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-18">collections.loadSavedPreset</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-18" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Load one of the player's saved Decks and set it as the current Deck.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>presetID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-19">collections.saveDeckAsPreset</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-19" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Save the current preset as a new deck or update an existing deck.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>presetID</u></li>
+                            <li><u>presetName</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-20">collections.saveSelectionAsPreset</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-20" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Save a selection of cards belonging from the player collection as a new
+                        deck or update an existing deck.</p>Parameters:
+                        <ul>
+                            <li><u>characterInCollectionsIDs</u>
+                                <small>(optional, default value: [array []])</small>
+                            </li>
+                            <li><u>presetID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>presetName</u>
+                                <small>(optional, default value: [string ""])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-21">collections.search</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-21" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Search for characters in all the characters availables using the
+                        characters names only (for now).<br>
+                        The search text must be at least 2 characters.<br>
+                        For each character in the resulsts it indicates if the player owns the character (in that case,
+                        the character will be returned at their owned max level).</p>Parameters:
+                        <ul>
+                            <li><u>searchText</u></li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-22">collections.setSelectionAsDeck</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-22" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Set a selection of characters in collection as the player deck.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>characterInCollectionIDs</u>
+                                <small>(optional, default value: [array []])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Forums</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-23">forums.createMessage</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-23" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Create a new message.</p>Parameters:
+                        <ul>
+                            <li><u>subjectID</u></li>
+                            <li><u>message</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-24">forums.createSubject</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-24" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Create a new subject.</p>Parameters:
+                        <ul>
+                            <li><u>themeID</u></li>
+                            <li><u>title</u></li>
+                            <li><u>message</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-25">forums.getMessagesPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-25" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the forum messages for a specific subject</p>Parameters:
+                        <ul>
+                            <li><u>subjectID</u></li>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 10])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-26">forums.getSubjectsPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-26" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the forum subjects for a specific theme</p>Parameters:
+                        <ul>
+                            <li><u>themeID</u></li>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 20])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-27">forums.getThemes</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-27" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get all the forums themes.</p>No parameters</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>General</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-28">general.findPlayersByName</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-28" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Search players with nicknames containing partOfName. (partOfName must be
+                        at least 5 characters)</p>Parameters:
+                        <ul>
+                            <li><u>partOfName</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-29">general.getCountries</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-29" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Return the list of availables countries.</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-30">general.getDailyReward</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-30" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Distributes and retrieves the daily reward.<br>
+                        <br>
+                        @return array</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-31">general.getEFCDailyReward</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-31" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Distributes and retrieves the EFC daily reward.<br>
+                        <br>
+                        @return array</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-32">general.getHotNews</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-32" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Retrieve the last biggest news.</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-33">general.getNewCharacters</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-33" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Retrieve the lastest X characters.</p>Parameters:
+                        <ul>
+                            <li><u>nbLastCharacters</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-34">general.getNewCharactersAdParams</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-34" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get all the required infos to integrate the flash client</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-35">general.getNews</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-35" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Retrieve the last X editorial content.<br>
+                        <br>
+                        @param int $nbNews<br>
+                        @param string $type ("news", "events" or "presets" at the moment)<br>
+                        @return void<br>
+                        @author Sebastien Flory</p>Parameters:
+                        <ul>
+                            <li><u>nbNews</u>
+                                <small>(optional, default value: [integer 10])</small>
+                            </li>
+                            <li><u>type</u>
+                                <small>(optional, default value: [string "news"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-36">general.getPlayer</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-36" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get all sort of informations about the current player.<br>
+                        Also returns the url of the host for all static content (images, swf etc..).</p>Parameters:
+                        <ul>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-37">general.getPlayersPoints</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-37" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get multiples players scores for day, week, month, overall.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>playerIDs</u>
+                                <small>(optional, default value: [array []])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-38">general.getSpecialEventStatus</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-38" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get missions stats for $codename special Event</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-39">general.getSupportedLanguages</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-39" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get all supported languages on Urban Rivals</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-40">general.getTips</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-40" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Return a set of tips to display at random</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-41">general.getTournamentsPeriods</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-41" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Return a list of items with all tournaments periods for today</p>No
+                        parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-42">general.removePresence</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-42" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Remove the player presence. (ie: will show as status "offline")<br>
+                        Note: battles.getStatus will update the presence, so the status will be overrided as online with
+                        the current room name if you are calling getStatus frequently.</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-43">general.setPresenceVisibility</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-43" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Set the player "presence" visibility. (ie: will show as status "offline"
+                        even if updating the presence or playing)</p>Parameters:
+                        <ul>
+                            <li><u>visible</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-44">general.updatePresence</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-44" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Update the player presence. (ie: will show as status "online - surfing
+                        the website")<br>
+                        @param apiConsumerMedium Optional, Set the current medium used by the api (allowed: web, iphone,
+                        facebook)<br>
+                        @param apiConsumerID Optional, Set the medium specific ID<br>
+                        @param apiConsumerExtraInfos Optional, Any useful extra infos<br>
+                        Note: battles.getStatus will also update the presence, so no need to use this call if you are
+                        already getting the in-game status frequently.</p>Parameters:
+                        <ul>
+                            <li><u>apiConsumerMedium</u></li>
+                            <li><u>apiConsumerID</u></li>
+                            <li><u>apiConsumerExtraInfos</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Guilds</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-45">guilds.createGuild</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-45" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Creates a guild.</p>Parameters:
+                        <ul>
+                            <li><u>name</u></li>
+                            <li><u>description</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-46">guilds.getChampionsGameModes</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-46" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of the gamemodes for guild champions.</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-47">guilds.getExistingRightsAndGrades</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-47" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of all existing guild rights and grades.</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-48">guilds.getGuild</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-48" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get a guild, pass 0 as the guildID for the current player guild.<br>
+                        Warning: this method is a little bit slow for the moment, please use with caution.<br>
+                        If the guild is the player's guild, you'll get the 'guildMsgStatus' in the context.<br>
+                        Return validated members as items.</p>Parameters:
+                        <ul>
+                            <li><u>guildID</u></li>
+                            <li><u>full</u></li>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-49">guilds.getGuildMembersPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-49" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Return a page from the list of guilds.<br>
+                        Can be filtered by country and if recruiting or not.</p>Parameters:
+                        <ul>
+                            <li><u>guildID</u></li>
+                            <li><u>page</u></li>
+                            <li><u>nbPerPage</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-50">guilds.getGuildsPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-50" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Return a page from the list of guilds.<br>
+                        Can be filtered by country and if recruiting or not.</p>Parameters:
+                        <ul>
+                            <li><u>page</u></li>
+                            <li><u>nbPerPage</u></li>
+                            <li><u>country</u></li>
+                            <li><u>recruiting</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-51">guilds.joinGuild</a></h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-51" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Join a guild</p>Parameters:
+                        <ul>
+                            <li><u>guildID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-52">guilds.leaveGuild</a></h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-52" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Leave the current guild</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-53">guilds.sendGuildMsg</a></h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-53" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Send a msg to the Guild</p>Parameters:
+                        <ul>
+                            <li><u>msg</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Market</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-54">market.cancelSale</a></h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-54" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Cancel one of the player sale on the Market.</p>Parameters:
+                        <ul>
+                            <li><u>characterInMarketID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-55">market.getCharactersPricesCurrent</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-55" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the current offers prices of character(s)<br>
+                        Optionnaly pass the characters levels for more specific prices.<br>
+                        If you pass a clanID, it will override any params you might have set for charactersIDs or
+                        charactersLevels and return all the prices for the clan's characters.</p>Parameters:
+                        <ul>
+                            <li><u>charactersIDs</u></li>
+                            <li><u>charactersLevels</u>
+                                <small>(optional, default value: [boolean false])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-56">market.getCurrentSales</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-56" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the outstanding private sales offered to the player on the
+                        market.<br>
+                        Try to not call this method more than once every 30 secs - you will be blocked at some
+                        point.<br>
+                        You can filter by clanID.<br>
+                        groupType can be "all" or "missing"<br>
+                        sortBy can be "price" or "date"<br>
+                        orderBy can be "asc" or "desc"</p>Parameters:
+                        <ul>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 12])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>groupType</u>
+                                <small>(optional, default value: [string "all"])</small>
+                            </li>
+                            <li><u>sortBy</u>
+                                <small>(optional, default value: [string "price"])</small>
+                            </li>
+                            <li><u>orderBy</u>
+                                <small>(optional, default value: [string "asc"])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-57">market.getHistoryPurchases</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-57" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the history of the player purchases on the market.<br>
+                        Try to not call this method more than once every 30 secs - you will be blocked at some
+                        point.<br>
+                        You can filter by clanID.<br>
+                        sortBy can be "price" or "date"<br>
+                        orderBy can be "asc" or "desc"</p>Parameters:
+                        <ul>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 12])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>sortBy</u>
+                                <small>(optional, default value: [string "price"])</small>
+                            </li>
+                            <li><u>orderBy</u>
+                                <small>(optional, default value: [string "asc"])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-58">market.getHistorySales</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-58" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the history of the player sales on the market.<br>
+                        Try to not call this method more than once every 30 secs - you will be blocked at some
+                        point.<br>
+                        You can filter by clanID.<br>
+                        sortBy can be "price" or "date"<br>
+                        orderBy can be "asc" or "desc"</p>Parameters:
+                        <ul>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 12])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>sortBy</u>
+                                <small>(optional, default value: [string "price"])</small>
+                            </li>
+                            <li><u>orderBy</u>
+                                <small>(optional, default value: [string "asc"])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-59">market.getMarketPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-59" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get an offers page from the market, ie: a list of distinct character,
+                        sorted and filtered by the criterias<br>
+                        Try to not call this method more than once every 30 secs - you will be blocked at some
+                        point.<br>
+                        You can filter by clanID and/or by a character name<br>
+                        groupType can be "all" or "missing"<br>
+                        sortBy can be "price" or "date"<br>
+                        orderBy can be "asc" or "desc"<br>
+                        filter can be a characterID or part of the character or clan name (as string)</p>Parameters:
+                        <ul>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 12])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>groupType</u>
+                                <small>(optional, default value: [string "all"])</small>
+                            </li>
+                            <li><u>sortBy</u>
+                                <small>(optional, default value: [string "price"])</small>
+                            </li>
+                            <li><u>orderBy</u>
+                                <small>(optional, default value: [string "asc"])</small>
+                            </li>
+                            <li><u>filter</u>
+                                <small>(optional, default value: [string ""])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-60">market.getOffersForCharacter</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-60" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the offers available for a specific Character, with an optional
+                        filter on the level</p>Parameters:
+                        <ul>
+                            <li><u>characterID</u></li>
+                            <li><u>onlyAtLevels</u></li>
+                            <li><u>maxResults</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-61">market.getWaitingPrivateSales</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-61" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the offers from the market.<br>
+                        Try to not call this method more than once every 30 secs - you will be blocked at some
+                        point.<br>
+                        You can filter by clanID.<br>
+                        groupType can be "all" or "missing"<br>
+                        sortBy can be "price" or "date"<br>
+                        orderBy can be "asc" or "desc"</p>Parameters:
+                        <ul>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 12])</small>
+                            </li>
+                            <li><u>clanID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>groupType</u>
+                                <small>(optional, default value: [string "all"])</small>
+                            </li>
+                            <li><u>sortBy</u>
+                                <small>(optional, default value: [string "price"])</small>
+                            </li>
+                            <li><u>orderBy</u>
+                                <small>(optional, default value: [string "asc"])</small>
+                            </li>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-62">market.purchaseOffer</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-62" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Buy a character from the Market, adding it to the player's collection
+                        (and Deck if that's the player's preference).<br>
+                        In order to protect the market from Bots, you must supply the correct verification code that
+                        correspond to the "captcha" image of the offer on the market (the URL is supplied in various
+                        markets.getOffersXXXXXX output).</p>Parameters:
+                        <ul>
+                            <li><u>characterInMarketID</u></li>
+                            <li><u>verificationCode</u></li>
+                            <li><u>addToDeck</u>
+                                <small>(optional, default value: [boolean false])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-63">market.sellCharacter</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-63" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Sell a character on the Market, set an destNickname if the character must
+                        be sold to someone in particular (it will fail if the nickname doesn't match anyone).</p>
+                        Parameters:
+                        <ul>
+                            <li><u>characterInCollectionID</u></li>
+                            <li><u>priceInClintz</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>destNickname</u>
+                                <small>(optional, default value: [string ""])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-64">market.sellCharacterToBank</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-64" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Sell a character on the Market to the bank for a fixed price.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>characterInCollectionID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Missions</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-65">missions.getCategories</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-65" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of existing mission categories</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-66">missions.getLastProgressMissions</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-66" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of last progress missions of player.<br>
+                        Retrieves by default the 5 last progress.</p>Parameters:
+                        <ul>
+                            <li><u>nbMissions</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-67">missions.getMissions</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-67" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of missions of the players<br>
+                        group can be 'all', 'inprogress' or 'completed'<br>
+                        You can either use the groups or do the grouping yourself client-side.</p>Parameters:
+                        <ul>
+                            <li><u>group</u>
+                                <small>(optional, default value: [string "all"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-68">missions.getMissionsCategoriesGroups</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-68" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of missions categories ordered by groups</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-69">missions.getMissionsInCategory</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-69" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of missions for a given category.<br>
+                        Each item in the list will be either a MissionOfPlayer or a Mission depending on wether<br>
+                        the player has unlocked the mission.</p>Parameters:
+                        <ul>
+                            <li><u>categoryID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-70">missions.getMissionsRanking</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-70" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the rankings of missions for the player: friends ranking, guild
+                        ranking, global ranking</p>Parameters:
+                        <ul>
+                            <li><u>imageSize</u>
+                                <small>(optional, default value: [string "small"])</small>
+                            </li>
+                            <li><u>imageFormat</u>
+                                <small>(optional, default value: [string "png"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-71">missions.getMissionsSummary</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-71" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the various stats about the player's missions progress</p>No
+                        parameters
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Players</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-72">players.addFriend</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-72" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Add a player to the friends list.</p>Parameters:
+                        <ul>
+                            <li><u>playerID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-73">players.addPlayerToPersonnalBlacklist</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-73" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Add a player to the player's personnal blacklist.</p>Parameters:
+                        <ul>
+                            <li><u>playerID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-74">players.deletePrivatesMessages</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-74" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Delete one or more private(s) message(s).<br>
+                        privateMessageIDs can be a single ID or an array of IDs.<br>
+                        msgBox can be "inbox" or "outbox"<br>
+                        If emptyMsgBox is true, then we will empty the box of all messages, regardless of the ids.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>privateMessageIDs</u></li>
+                            <li><u>msgBox</u>
+                                <small>(optional, default value: [string "inbox"])</small>
+                            </li>
+                            <li><u>emptyMsgBox</u>
+                                <small>(optional, default value: [boolean false])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-75">players.getAppNotificationsContent</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-75" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the content to display for each app notification ID we receive.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>appNotifIDs</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-76">players.getBattleHistoryPage</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-76" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the battle history of a player (in descending order).<br>
+                        Battles history is deleted every X days.</p>Parameters:
+                        <ul>
+                            <li><u>page</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                            <li><u>nbPerPage</u>
+                                <small>(optional, default value: [integer 30])</small>
+                            </li>
+                            <li><u>battleRuleID</u>
+                                <small>(optional, default value: [integer 0])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-77">players.getBattleRuleInfos</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-77" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the battlerule infos for a player.</p>Parameters:
+                        <ul>
+                            <li><u>battleRuleID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-78">players.getFeed</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-78" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the feed of events for the player. To get only the new item since
+                        your last request, sent the highest feed item id that you have received client side.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>nbStoriesMax</u></li>
+                            <li><u>highestID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-79">players.getFeedFilters</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-79" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Return all the availables filters for the feed and the current setting of
+                        each filter.</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-80">players.getFriends</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-80" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of friends for the player.</p>Parameters:
+                        <ul>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-81">players.getFriendsLight</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-81" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of friends for the player, just the id and the mutual
+                        status. Avoid using the "real" api call if you just need thoses infos, it will be much
+                        lighter.</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-82">players.getLevelUpRewards</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-82" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Retrieves the specified level up rewards.<br>
+                        <br>
+                        @return array</p>Parameters:
+                        <ul>
+                            <li><u>oldLevel</u></li>
+                            <li><u>newLevel</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-83">players.getPersonnalBlacklist</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-83" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the personnal blacklist of a player.</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-84">players.getPlayerProfile</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-84" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the profile of a player (rankings, competitives modes etc..).</p>
+                        Parameters:
+                        <ul>
+                            <li><u>playerID</u></li>
+                            <li><u>imageSize</u></li>
+                            <li><u>imageFormat</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-85">players.getPrivatesMessages</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-85" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the privates messages of the player.<br>
+                        msgBox is either "inbox" or "outbox"</p>Parameters:
+                        <ul>
+                            <li><u>page</u></li>
+                            <li><u>nbPerPage</u></li>
+                            <li><u>msgBox</u></li>
+                            <li><u>unreadOnly</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-86">players.getTotalOnlineFriends</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-86" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the list of friends for the player.</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-87">players.getTotalUnreadPrivatesMessages</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-87" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Get the number of unread message(s) in the player inbox.</p>No parameters
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-88">players.removeFriend</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-88" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Remove a player to the friends list.</p>Parameters:
+                        <ul>
+                            <li><u>playerID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-89">players.removePlayerFromPersonnalBlacklist</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-89" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Remove a player from the player's personnal blacklist.</p>Parameters:
+                        <ul>
+                            <li><u>playerID</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-90">players.sendPlayerLostPasswordMail</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-90" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Send a password reset process by mail<br>
+                        @param string $pseudo pseudo or email to found<br>
+                        @return array</p>Parameters:
+                        <ul>
+                            <li><u>pseudo</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-91">players.sendPrivateMessage</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-91" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Send a private message to one of the player.<br>
+                        If the destPlayerIDorPlayerNickname parameter is numeric, it will be considered as the playerID,
+                        otherwise, we'll try to lookup the playerID first from the nickname.</p>Parameters:
+                        <ul>
+                            <li><u>destPlayerIDorPlayerNickname</u></li>
+                            <li><u>msgBody</u></li>
+                            <li><u>msgSubject</u>
+                                <small>(optional, default value: [string ""])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-92">players.setFeedFilter</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-92" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Set the state of a feed filter<br>
+                        @param int $activityTypeID the id of the kind of feed activity you want to change<br>
+                        @param bool $filterState a boolean indicating if you want to filter or not<br>
+                        @param string $filterKind "out" or "in"</p>Parameters:
+                        <ul>
+                            <li><u>activityTypeID</u></li>
+                            <li><u>filterState</u></li>
+                            <li><u>filterKind</u>
+                                <small>(optional, default value: [string "out"])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-93">players.setLanguage</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-93" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Set the player's language in ISO 639-1 format (2 letters).<br>
+                        Pass a list of languages, in order of preference.<br>
+                        The first to be supported on the Urban Rivals plateform will be used.<br>
+                        <a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">Reference of
+                            ISO 639-1 languages codes</a><br>
+                        Will also default to "<b>en</b>" (english) if no languages is supported by the Urban Rivals
+                        plateform.<br>
+                        In that later case, an error will be returned as well as a list of supported languages.</p>
+                        Parameters:
+                        <ul>
+                            <li><u>languages</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-94">players.setPicture</a></h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-94" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Set the player's picture by submitted a base64 encoded jpg, gif or png
+                        (prefered).<br>
+                        200ko max size.<br>
+                        It will be automatically resized but square ratio is better.</p>Parameters:
+                        <ul>
+                            <li><u>fileInBase64</u></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-95">players.setPrivatesMessagesReadStatus</a>
+            </h4>
+                <small class="text-muted">Requires <b>Action</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-95" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Change the status of one or more private(s) message(s).<br>
+                        msgBox can be "inbox" or "outbox"<br>
+                        privateMessageIDs can be a single ID or an array of IDs.</p>Parameters:
+                        <ul>
+                            <li><u>privateMessageIDs</u></li>
+                            <li><u>msgBox</u>
+                                <small>(optional, default value: [string "inbox"])</small>
+                            </li>
+                            <li><u>readStatus</u>
+                                <small>(optional, default value: [boolean false])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-96">players.writeFeedMsg</a>
+            </h4>
+                <small class="text-muted">Requires <b>User</b> access to the API, returns <b>Context</b></small>
+                <div id="collapse-96" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Write a new message in the player feed.<br>
+                        @param string $msg message to send<br>
+                        @return bool</p>Parameters:
+                        <ul>
+                            <li><u>msg</u>
+                                <small>(optional, default value: [string ""])</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Shop</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-97">shop.getSpecialOffersNews</a>
+            </h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-97" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Retrieve news data about player's active special offers.</p>No parameters
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="apiCategory">
+        <legend>Urc</legend>
+        <div class="panel-group">
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-98">urc.getCharacters</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-98" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Gets all necessary characters datas for UC.</p>No parameters</div>
+                </div>
+            </div>
+            <div class="panel panel-default"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                                        href="#collapse-99">urc.getClans</a></h4>
+                <small class="text-muted">Requires <b>Public</b> access to the API, returns <b>Items &amp; Context</b>
+                </small>
+                <div id="collapse-99" class="panel-collapse collapse">
+                    <div class="panel-body"><p>Gets all necessary clans datas for UC.</p>No parameters</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+</body>
+</html>
