@@ -1,10 +1,4 @@
 <?php
-/**
- * @author      Wizacha DevTeam <dev@wizacha.com>
- * @copyright   Copyright (c) Wizacha
- * @license     Proprietary
- */
-
 
 namespace App\Controller;
 
@@ -57,6 +51,38 @@ class CollectionsController
     public function getPresets()
     {
         $command = new Command('collections.getPresets');
+
+        $this->factory->execute(new Request($command));
+
+        dump($command->getResult());
+        die;
+    }
+
+    /**
+     * @throws \Exception
+     *
+     * @Route("/getCollectionPage")
+     */
+    public function getCollectionPage()
+    {
+        $command = new Command('collections.getCollectionPage');
+
+        $this->factory->execute(new Request($command));
+
+        dump($command->getResult());
+        die;
+    }
+
+    /**
+     * @throws \Exception
+     *
+     * @Route("/getCharacterVariations/{characterID}")
+     */
+    public function getCharacterVariations(int $characterID)
+    {
+        $command = new Command('collections.getCharacterVariations', [
+            'characterID' => $characterID
+        ]);
 
         $this->factory->execute(new Request($command));
 

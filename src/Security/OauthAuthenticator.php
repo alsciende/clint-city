@@ -1,15 +1,9 @@
 <?php
-/**
- * @author      Wizacha DevTeam <dev@wizacha.com>
- * @copyright   Copyright (c) Wizacha
- * @license     Proprietary
- */
-
 
 namespace App\Security;
 
-
 use App\Oauth\Storage;
+use App\Oauth\Token;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -53,6 +47,10 @@ class OauthAuthenticator extends AbstractGuardAuthenticator
     public function getCredentials(Request $request)
     {
         $token = $this->storage->get();
+
+        if (!$token instanceof Token) {
+            throw new \UnexpectedValueException('No session token. Try again.');
+        }
 
         if ($token->getToken() !== $request->query->get('oauth_token')) {
             throw new \UnexpectedValueException('Token mismatch.');

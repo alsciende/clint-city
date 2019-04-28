@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09803dbcfe8c2816c8f9b03a2a5e3b7a",
+    "content-hash": "f48f5a969a5486b6f8575fb9d82d0375",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -940,12 +940,12 @@
             "version": "v2.6.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "d2b4dd71d2a276edd65d0c170375b445f8a4a4a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
                 "reference": "d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
                 "shasum": ""
             },
@@ -1511,6 +1511,49 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "jp3cki/fisher-yates-shuffle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fetus-hina/fisher-yates-shuffle.git",
+                "reference": "deeb0d300b07a6890286bbe515a0105327607ebb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fetus-hina/fisher-yates-shuffle/zipball/deeb0d300b07a6890286bbe515a0105327607ebb",
+                "reference": "deeb0d300b07a6890286bbe515a0105327607ebb",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "^1.1",
+                "php": ">= 5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/shuffle.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "AIZAWA Hina",
+                    "email": "hina@bouhime.com",
+                    "homepage": "https://fetus.jp/"
+                }
+            ],
+            "description": "The implementation of Fisher-Yates shuffle Algorithm.",
+            "keywords": [
+                "array",
+                "random",
+                "shuffle"
+            ],
+            "time": "2016-02-03T10:37:01+00:00"
         },
         {
             "name": "league/oauth1-client",

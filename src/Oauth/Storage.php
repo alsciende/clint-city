@@ -1,13 +1,6 @@
 <?php
-/**
- * @author      Wizacha DevTeam <dev@wizacha.com>
- * @copyright   Copyright (c) Wizacha
- * @license     Proprietary
- */
-
 
 namespace App\Oauth;
-
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
