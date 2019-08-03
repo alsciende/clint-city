@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Service\Characters;
+use Sdk\Handler\GetCharactersHandler;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,24 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class CharactersController
 {
     /**
-     * @var Characters
+     * @Route("/getCharacters")
      */
-    private $characters;
-
-    /**
-     * CharactersController constructor.
-     */
-    public function __construct(Characters $characters)
+    public function getCharacters(GetCharactersHandler $handler)
     {
-        $this->characters = $characters;
+        dump($handler([], 42));
+        die;
     }
 
     /**
-     * @Route("/getCharacters")
+     * @Route("/getCharacters/{clanId}")
      */
-    public function getCharacters()
+    public function getCharactersByClan(int $clanId, GetCharactersHandler $handler)
     {
-        dump($this->characters->getCharacters([], 42));
+        dump($handler([], $clanId));
         die;
     }
 }
