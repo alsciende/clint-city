@@ -12,7 +12,7 @@ class GetClanSummaryCommand extends AbstractCommand
         return 'collections.getClanSummary';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetClanSummaryResult::class;
     }

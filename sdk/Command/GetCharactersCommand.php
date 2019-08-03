@@ -12,7 +12,7 @@ class GetCharactersCommand extends AbstractCommand
         return 'characters.getCharacters';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetCharactersResult::class;
     }

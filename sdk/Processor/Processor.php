@@ -47,9 +47,17 @@ class Processor implements ProcessorInterface
 
     public function process(CommandInterface $command): CommandInterface
     {
+        $data = $this->client->executeCommand($command);
+
+        /**
+         * @see https://github.com/phpstan/phpstan-symfony/pull/54
+         *
+         * $result = $this->serializer->denormalize($data, $command->getResultClassName());
+         */
+
         $result = $this->serializer->deserialize(
-            $this->serializer->serialize($this->client->executeCommand($command), 'json'),
-            $command->getClassName(),
+            $this->serializer->serialize($data, 'json'),
+            $command->getResultClassName(),
             'json'
         );
 

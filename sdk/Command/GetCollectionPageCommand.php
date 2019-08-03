@@ -12,7 +12,7 @@ class GetCollectionPageCommand extends AbstractCommand
         return 'collections.getCollectionPage';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetCollectionPageResult::class;
     }

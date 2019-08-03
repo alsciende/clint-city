@@ -12,7 +12,7 @@ class GetMissionsCommand extends AbstractCommand
         return 'missions.getMissions';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetMissionsResult::class;
     }

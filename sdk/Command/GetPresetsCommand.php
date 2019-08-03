@@ -12,7 +12,7 @@ class GetPresetsCommand extends AbstractCommand
         return 'collections.getPresets';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetPresetsResult::class;
     }

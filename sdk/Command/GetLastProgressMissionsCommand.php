@@ -12,7 +12,7 @@ class GetLastProgressMissionsCommand extends AbstractCommand
         return 'missions.getLastProgressMissions';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetLastProgressMissionsResult::class;
     }

@@ -12,7 +12,7 @@ class SetSelectionAsDeckCommand extends AbstractCommand
         return 'collections.setSelectionAsDeck';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return SetSelectionAsDeckResult::class;
     }

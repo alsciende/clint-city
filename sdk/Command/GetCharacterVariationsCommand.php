@@ -12,7 +12,7 @@ class GetCharacterVariationsCommand extends AbstractCommand
         return 'collections.getCharacterVariations';
     }
 
-    public function getClassName(): string
+    public function getResultClassName(): string
     {
         return GetCharacterVariationsResult::class;
     }
