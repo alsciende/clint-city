@@ -18,6 +18,6 @@ class GetClanSummaryCommand extends AbstractCommand
 
     public function getResponse(): GetClanSummaryResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

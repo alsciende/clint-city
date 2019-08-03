@@ -18,6 +18,6 @@ class SetSelectionAsDeckCommand extends AbstractCommand
 
     public function getResponse(): SetSelectionAsDeckResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

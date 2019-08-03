@@ -34,7 +34,7 @@ class Command implements CommandInterface
     /**
      * @var array
      */
-    private $result;
+    private $data;
 
     /**
      * Command constructor.
@@ -116,16 +116,16 @@ class Command implements CommandInterface
     /**
      * @return array
      */
-    public function getResult(): array
+    public function getData(): array
     {
-        return $this->result;
+        return $this->data;
     }
 
     /**
-     * @param array $result
+     * @param array $data
      */
-    public function setResult(array $result): void
+    public function setData(array $data): void
     {
-        $this->result = $result;
+        $this->data = $data;
     }
 }

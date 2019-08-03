@@ -6,11 +6,11 @@ use Api\Dto\Command;
 
 abstract class AbstractCommand extends Command implements CommandInterface
 {
-    protected $response;
+    protected $result;
 
-    public function setResponse($response): self
+    public function setResult($result): self
     {
-        $this->response = $response;
+        $this->result = $result;
 
         return $this;
     }

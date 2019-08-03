@@ -18,6 +18,6 @@ class GetCharactersCommand extends AbstractCommand
 
     public function getResponse(): GetCharactersResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

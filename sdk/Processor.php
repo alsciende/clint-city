@@ -45,7 +45,7 @@ class Processor
         );
     }
 
-    public function process(CommandInterface $command)
+    public function process(CommandInterface $command): CommandInterface
     {
         $result = $this->serializer->deserialize(
             $this->serializer->serialize($this->client->executeCommand($command), 'json'),
@@ -53,6 +53,6 @@ class Processor
             'json'
         );
 
-        return $command->setResponse($result);
+        return $command->setResult($result);
     }
 }

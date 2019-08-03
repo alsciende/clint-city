@@ -18,6 +18,6 @@ class GetClanSummaryWithBestCharacterCommand extends AbstractCommand
 
     public function getResponse(): GetClanSummaryWithBestCharacterResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

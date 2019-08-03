@@ -70,7 +70,7 @@ class GenericClient
             $command = $request->getCommand($call);
 
             if ($command instanceof Command) {
-                $command->setResult($result);
+                $command->setData($result);
             }
         }
     }

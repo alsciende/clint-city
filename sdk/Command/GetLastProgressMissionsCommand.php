@@ -18,6 +18,6 @@ class GetLastProgressMissionsCommand extends AbstractCommand
 
     public function getResponse(): GetLastProgressMissionsResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

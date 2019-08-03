@@ -11,6 +11,6 @@ class SingleCommandClient extends GenericClient
     {
         $this->executeRequest(new Request($command));
 
-        return $command->getResult();
+        return $command->getData();
     }
 }

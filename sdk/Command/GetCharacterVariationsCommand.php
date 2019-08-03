@@ -18,6 +18,6 @@ class GetCharacterVariationsCommand extends AbstractCommand
 
     public function getResponse(): GetCharacterVariationsResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

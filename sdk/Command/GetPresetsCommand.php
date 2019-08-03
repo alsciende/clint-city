@@ -18,6 +18,6 @@ class GetPresetsCommand extends AbstractCommand
 
     public function getResponse(): GetPresetsResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

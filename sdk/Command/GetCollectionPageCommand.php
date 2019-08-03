@@ -18,6 +18,6 @@ class GetCollectionPageCommand extends AbstractCommand
 
     public function getResponse(): GetCollectionPageResult
     {
-        return $this->response;
+        return $this->result;
     }
 }

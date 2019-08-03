@@ -18,6 +18,6 @@ class GetMissionsCommand extends AbstractCommand
 
     public function getResponse(): GetMissionsResult
     {
-        return $this->response;
+        return $this->result;
     }
 }
