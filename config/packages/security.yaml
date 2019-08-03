@@ -13,7 +13,7 @@ security:
             pattern: ^/login$
             security: false
         main:
-            anonymous: false
+            anonymous: true
             guard:
                 authenticators:
                     - App\Security\OauthAuthenticator

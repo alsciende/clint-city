@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security;
 
-use App\Oauth\Storage;
-use App\Oauth\Token;
+use Sdk\Oauth\Storage;
+use Sdk\Oauth\Token;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -27,6 +29,7 @@ class OauthAuthenticator extends AbstractGuardAuthenticator
 
     /**
      * OauthAuthenticator constructor.
+     *
      * @param Security $security
      */
     public function __construct(Security $security, Storage $storage)
@@ -77,7 +80,7 @@ class OauthAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        return;
+        return null;
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)

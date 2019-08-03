@@ -1,31 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use App\Api\Command;
-use App\Api\Request;
-use App\Oauth\Factory;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sdk\Api\Collections;
+use Sdk\Message\GetCharacterVariationsQuery;
+use Sdk\MessageHandler\GetCharacterVariationsHandler;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CollectionsController
- * @package App\Controller
  *
  * @Route("/collections")
  */
-class CollectionsController
+class CollectionsController extends AbstractController
 {
     /**
-     * @var Factory
+     * @var Collections
      */
-    private $factory;
+    private $collections;
 
     /**
      * CharactersController constructor.
      */
-    public function __construct(Factory $factory)
+    public function __construct(Collections $collections)
     {
-        $this->factory = $factory;
+        $this->collections = $collections;
     }
 
     /**
@@ -35,11 +37,7 @@ class CollectionsController
      */
     public function getClanSummary()
     {
-        $command = new Command('collections.getClanSummary');
-
-        $this->factory->execute(new Request($command));
-
-        dump($command->getResult());
+        dump($this->collections->getClanSummary(38));
         die;
     }
 
@@ -50,11 +48,7 @@ class CollectionsController
      */
     public function getPresets()
     {
-        $command = new Command('collections.getPresets');
-
-        $this->factory->execute(new Request($command));
-
-        dump($command->getResult());
+        dump($this->collections->getPresets());
         die;
     }
 
@@ -65,11 +59,7 @@ class CollectionsController
      */
     public function getCollectionPage()
     {
-        $command = new Command('collections.getCollectionPage');
-
-        $this->factory->execute(new Request($command));
-
-        dump($command->getResult());
+        dump($this->collections->getCollectionPage());
         die;
     }
 
@@ -78,15 +68,12 @@ class CollectionsController
      *
      * @Route("/getCharacterVariations/{characterID}")
      */
-    public function getCharacterVariations(int $characterID)
+    public function getCharacterVariations(int $characterID, GetCharacterVariationsHandler $handler)
     {
-        $command = new Command('collections.getCharacterVariations', [
-            'characterID' => $characterID
-        ]);
+        $query = new GetCharacterVariationsQuery($characterID);
+        $result = $handler($query);
 
-        $this->factory->execute(new Request($command));
-
-        dump($command->getResult());
+        dump($result);
         die;
     }
 }

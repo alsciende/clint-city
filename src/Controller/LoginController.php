@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use App\Oauth\Factory;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Sdk\Oauth\Factory;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LoginController extends Controller
+class LoginController extends AbstractController
 {
     /**
-     * @Route("/login")
+     * @Route("/login", name="login")
      */
     public function login(Factory $oauthFactory)
     {
@@ -35,6 +36,6 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        throw new \LogicException("Controller should not be called.");
+        throw new \LogicException('Controller should not be called.');
     }
 }

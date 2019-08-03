@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security;
 
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -13,6 +15,7 @@ class User implements UserInterface
 
     /**
      * User constructor.
+     *
      * @param string $username
      */
     public function __construct(string $username)
@@ -23,7 +26,7 @@ class User implements UserInterface
     public function getRoles()
     {
         return [
-            'ROLE_USER'
+            'ROLE_USER',
         ];
     }
 

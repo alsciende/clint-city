@@ -1,45 +1,38 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use App\Api\Command;
-use App\Api\Request;
-use App\Oauth\Factory;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sdk\Api\Characters;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CharactersController
- * @package App\Controller
  *
  * @Route("/characters")
  */
 class CharactersController
 {
     /**
-     * @var Factory
+     * @var Characters
      */
-    private $factory;
+    private $characters;
 
     /**
      * CharactersController constructor.
      */
-    public function __construct(Factory $factory)
+    public function __construct(Characters $characters)
     {
-        $this->factory = $factory;
+        $this->characters = $characters;
     }
 
     /**
-     * @throws \Exception
-     *
      * @Route("/getCharacters")
      */
     public function getCharacters()
     {
-        $command = new Command('characters.getCharacters');
-
-        $this->factory->execute(new Request($command));
-
-        dump($command->getResult());
+        dump($this->characters->getCharacters([], 42));
         die;
     }
 }

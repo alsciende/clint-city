@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security;
 
-use App\Api\Command;
-use App\Api\Request;
-use App\Oauth\Factory;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Sdk\Api\Command;
+use Sdk\Api\Request;
+use Sdk\Oauth\Factory;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -19,7 +20,8 @@ class UserProvider implements UserProviderInterface
 
     /**
      * UserProvider constructor.
-     * @param SessionInterface $session
+     *
+     * @param Factory $factory
      */
     public function __construct(Factory $factory)
     {
@@ -49,6 +51,6 @@ class UserProvider implements UserProviderInterface
 
     public function supportsClass($class)
     {
-        return $class === User::class;
+        return User::class === $class;
     }
 }

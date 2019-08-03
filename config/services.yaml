@@ -21,6 +21,9 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
+    Sdk\:
+        resource: '../sdk/*'
+
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
@@ -30,8 +33,8 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Oauth\Factory:
+    Sdk\Oauth\Factory:
         arguments:
         - '%env(OAUTH_CONSUMER_KEY)%'
         - '%env(OAUTH_CONSUMER_SECRET)%'
-        - '@App\Oauth\Storage'
+        - '@Sdk\Oauth\Storage'
