@@ -2,45 +2,30 @@
 
 namespace App\Controller;
 
-use App\Service\Missions;
+use Sdk\Handler\GetLastProgressMissionsHandler;
+use Sdk\Handler\GetMissionsHandler;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class CollectionsController
- *
  * @Route("/missions")
  */
 class MissionsController
 {
     /**
-     * @var Missions
-     */
-    private $missions;
-
-    public function __construct(Missions $missions)
-    {
-        $this->missions = $missions;
-    }
-
-    /**
-     * @throws \Exception
-     *
      * @Route("/getMissions")
      */
-    public function getMissions()
+    public function getMissions(GetMissionsHandler $handler)
     {
-        dump($this->missions->getMissions(Missions::GROUP_COMPLETED)[0]);
+        dump($handler(GetMissionsHandler::GROUP_COMPLETED));
         die;
     }
 
     /**
-     * @throws \Exception
-     *
      * @Route("/getLastProgressMissions")
      */
-    public function getLastProgressMissions()
+    public function getLastProgressMissions(GetLastProgressMissionsHandler $handler)
     {
-        dump($this->missions->getLastProgressMissions(5));
+        dump($handler(5));
         die;
     }
 

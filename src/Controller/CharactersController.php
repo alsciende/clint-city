@@ -8,8 +8,6 @@ use Sdk\Handler\GetCharactersHandler;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class CharactersController
- *
  * @Route("/characters")
  */
 class CharactersController
