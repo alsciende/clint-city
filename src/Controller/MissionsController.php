@@ -17,7 +17,12 @@ class MissionsController
      */
     public function getMissions(Processor $processor)
     {
-        dump(GetMissionsFactory::create(GetMissionsFactory::GROUP_COMPLETED)->process($processor)->getResult());
+        $result = GetMissionsFactory
+            ::create(GetMissionsFactory::GROUP_COMPLETED)
+            ->process($processor)
+            ->getResult();
+
+        dump($result);
         die;
     }
 
@@ -26,7 +31,12 @@ class MissionsController
      */
     public function getLastProgressMissions(Processor $processor)
     {
-        dump(GetLastProgressMissionsFactory::create(5)->process($processor)->getResult());
+        $result = GetLastProgressMissionsFactory
+            ::create(5)
+            ->process($processor)
+            ->getResult();
+
+        dump($result);
         die;
     }
 

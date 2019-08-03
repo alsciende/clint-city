@@ -22,7 +22,12 @@ class CollectionsController extends AbstractController
      */
     public function getClanSummary(Processor $processor)
     {
-        dump(GetClanSummaryFactory::create(38)->process($processor)->getResult());
+        $result = GetClanSummaryFactory
+            ::create(38)
+            ->process($processor)
+            ->getResult();
+
+        dump($result);
         die;
     }
 
@@ -31,7 +36,12 @@ class CollectionsController extends AbstractController
      */
     public function getPresets(Processor $processor)
     {
-        dump(GetPresetsFactory::create()->process($processor)->getResult());
+        $result = GetPresetsFactory
+            ::create()
+            ->process($processor)
+            ->getResult();
+
+        dump($result);
         die;
     }
 
@@ -40,7 +50,12 @@ class CollectionsController extends AbstractController
      */
     public function getCollectionPage(Processor $processor)
     {
-        dump(GetCollectionPageFactory::create()->process($processor)->getResult());
+        $result = GetCollectionPageFactory
+            ::create()
+            ->process($processor)
+            ->getResult();
+
+        dump($result);
         die;
     }
 
@@ -49,7 +64,12 @@ class CollectionsController extends AbstractController
      */
     public function getCharacterVariations(int $characterID, Processor $processor)
     {
-        dump(GetCharacterVariationsFactory::create($characterID)->process($processor)->getResult());
+        $result = GetCharacterVariationsFactory
+            ::create($characterID)
+            ->process($processor)
+            ->getResult();
+
+        dump($result);
         die;
     }
 }

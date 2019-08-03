@@ -28,9 +28,11 @@ class DeckBuilderService
      */
     public function getBestCharacterVariation(int $characterID): ?CharacterWithVariation
     {
-        $command = GetCharacterVariationsFactory::create($characterID);
-        $this->processor->process($command);
-        $result = $command->getResult();
+        $result = GetCharacterVariationsFactory
+            ::create($characterID)
+            ->process($this->processor)
+            ->getResult();
+
         $characterVariations = $result->getItems();
 
         if (empty($characterVariations)) {
@@ -56,8 +58,10 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $command = GetCollectionPageFactory::create(false, $page++, 12);
-            $result = $command->process($this->processor)->getResult();
+            $result = GetCollectionPageFactory
+                ::create(false, $page++, 12)
+                ->process($this->processor)
+                ->getResult();
 
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
@@ -81,8 +85,10 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $command = GetCollectionPageFactory::create(false, $page++, 12, $clanId);
-            $result = $command->process($this->processor)->getResult();
+            $result = GetCollectionPageFactory
+                ::create(false, $page++, 12, $clanId)
+                ->process($this->processor)
+                ->getResult();
 
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
@@ -106,8 +112,10 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $command = GetCollectionPageFactory::create(false, $page++, 12, GetCollectionPageFactory::CLAN_ALL, GetCollectionPageFactory::GROUP_BY_BEST);
-            $result = $command->process($this->processor)->getResult();
+            $result = GetCollectionPageFactory
+                ::create(false, $page++, 12, GetCollectionPageFactory::CLAN_ALL, GetCollectionPageFactory::GROUP_BY_BEST)
+                ->process($this->processor)
+                ->getResult();
 
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
@@ -131,8 +139,10 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $command = GetCollectionPageFactory::create(false, $page++, 12, $clanId, GetCollectionPageFactory::GROUP_BY_BEST);
-            $result = $command->process($this->processor)->getResult();
+            $result = GetCollectionPageFactory
+                ::create(false, $page++, 12, $clanId, GetCollectionPageFactory::GROUP_BY_BEST)
+                ->process($this->processor)
+                ->getResult();
 
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
@@ -148,9 +158,10 @@ class DeckBuilderService
     {
         \jp3cki\fisherYatesShuffle\shuffle($characterInCollectionIDs);
 
-        $command = SetSelectionAsDeckFactory::create($characterInCollectionIDs);
-        $this->processor->process($command);
-        $result = $command->getResult();
+        $result = SetSelectionAsDeckFactory
+            ::create($characterInCollectionIDs)
+            ->process($this->processor)
+            ->getResult();
 
         dump($characterInCollectionIDs);
         dump($result->getContext());
