@@ -22,10 +22,10 @@ class GetClanSummaryWithBestCharacterCommand extends AbstractCommand
         return $this->result;
     }
 
-    public function process(ProcessorInterface $processor): GetClanSummaryWithBestCharacterResult
+    public function process(ProcessorInterface $processor): self
     {
         $processor->process($this);
 
-        return $this->result;
+        return $this;
     }
 }

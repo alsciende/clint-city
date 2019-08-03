@@ -22,10 +22,10 @@ class GetLastProgressMissionsCommand extends AbstractCommand
         return $this->result;
     }
 
-    public function process(ProcessorInterface $processor): GetLastProgressMissionsResult
+    public function process(ProcessorInterface $processor): self
     {
         $processor->process($this);
 
-        return $this->result;
+        return $this;
     }
 }

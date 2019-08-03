@@ -16,12 +16,12 @@ abstract class AbstractCommand extends Command implements CommandInterface
         return $this;
     }
 
-    abstract static public function getCallName(): string;
-
     public function __construct(array $params = [], array $contextFilter = [], array $itemsFilter = [])
     {
         parent::__construct(static::getCallName(), $params, $contextFilter, $itemsFilter);
     }
+
+    abstract static public function getCallName(): string;
 
     abstract public function process(ProcessorInterface $processor);
 }

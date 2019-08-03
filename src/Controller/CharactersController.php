@@ -18,7 +18,7 @@ class CharactersController
      */
     public function getCharacters(Processor $processor)
     {
-        dump($processor->process(GetCharactersFactory::create([], 42)));
+        dump(GetCharactersFactory::create([], 42)->process($processor)->getResult());
         die;
     }
 
@@ -27,7 +27,7 @@ class CharactersController
      */
     public function getCharactersByClan(int $clanId, Processor $processor)
     {
-        dump($processor->process(GetCharactersFactory::create([], $clanId)));
+        dump(GetCharactersFactory::create([], $clanId)->process($processor)->getResult());
         die;
     }
 }

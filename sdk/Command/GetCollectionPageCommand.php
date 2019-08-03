@@ -17,10 +17,15 @@ class GetCollectionPageCommand extends AbstractCommand
         return GetCollectionPageResult::class;
     }
 
-    public function process(ProcessorInterface $processor): GetCollectionPageResult
+    public function getResult(): GetCollectionPageResult
+    {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): self
     {
         $processor->process($this);
 
-        return $this->result;
+        return $this;
     }
 }

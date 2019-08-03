@@ -57,9 +57,8 @@ class DeckBuilderService
 
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12);
-            $result = $command->process($this->processor);
- //           $this->processor->process($command);
-//            $result = $command->getResult();
+            $result = $command->process($this->processor)->getResult();
+
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -83,8 +82,8 @@ class DeckBuilderService
 
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12, $clanId);
-            $this->processor->process($command);
-            $result = $command->getResult();
+            $result = $command->process($this->processor)->getResult();
+
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -108,8 +107,8 @@ class DeckBuilderService
 
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12, GetCollectionPageFactory::CLAN_ALL, GetCollectionPageFactory::GROUP_BY_BEST);
-            $this->processor->process($command);
-            $result = $command->getResult();
+            $result = $command->process($this->processor)->getResult();
+
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -133,8 +132,8 @@ class DeckBuilderService
 
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12, $clanId, GetCollectionPageFactory::GROUP_BY_BEST);
-            $this->processor->process($command);
-            $result = $command->getResult();
+            $result = $command->process($this->processor)->getResult();
+
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();

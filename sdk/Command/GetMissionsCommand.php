@@ -22,10 +22,10 @@ class GetMissionsCommand extends AbstractCommand
         return $this->result;
     }
 
-    public function process(ProcessorInterface $processor): GetMissionsResult
+    public function process(ProcessorInterface $processor): self
     {
         $processor->process($this);
 
-        return $this->result;
+        return $this;
     }
 }

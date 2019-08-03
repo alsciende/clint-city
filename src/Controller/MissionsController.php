@@ -17,7 +17,7 @@ class MissionsController
      */
     public function getMissions(Processor $processor)
     {
-        dump($processor->process(GetMissionsFactory::create(GetMissionsFactory::GROUP_COMPLETED)));
+        dump(GetMissionsFactory::create(GetMissionsFactory::GROUP_COMPLETED)->process($processor)->getResult());
         die;
     }
 
@@ -26,7 +26,7 @@ class MissionsController
      */
     public function getLastProgressMissions(Processor $processor)
     {
-        dump($processor->process(GetLastProgressMissionsFactory::create(5)));
+        dump(GetLastProgressMissionsFactory::create(5)->process($processor)->getResult());
         die;
     }
 
