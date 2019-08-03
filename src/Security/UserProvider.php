@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Security;
 
-use Sdk\Api\Command;
-use Sdk\Api\Request;
+use Sdk\Client\SingleCommandClient;
+use Sdk\Dto\Command;
 use Sdk\Oauth\Factory;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -33,8 +33,8 @@ class UserProvider implements UserProviderInterface
         $this->factory->getAccessToken();
 
         $command = new Command('general.getPlayer', [], ['player.id', 'player.name']);
-        $this->factory->execute(new Request($command));
-        $data = $command->getResult();
+        $client = new SingleCommandClient($this->factory);
+        $data = $client->executeCommand($command);
         $player = $data['context']['player'];
 
         return new User($player['name']);

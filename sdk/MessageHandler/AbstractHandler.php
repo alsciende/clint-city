@@ -2,7 +2,7 @@
 
 namespace Sdk\MessageHandler;
 
-use Sdk\Api\Client;
+use Sdk\Client\SingleCommandClient;
 use Sdk\Message\MessageInterface;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Serializer;
 class AbstractHandler
 {
     /**
-     * @var Client
+     * @var SingleCommandClient
      */
     protected $client;
 
@@ -24,10 +24,9 @@ class AbstractHandler
     protected $serializer;
 
     /**
-     * GetCharacterVariationsHandler constructor.
-     * @param Client             $client
+     * @param SingleCommandClient $client
      */
-    public function __construct(Client $client)
+    public function __construct(SingleCommandClient $client)
     {
         $this->client = $client;
         $this->serializer = new Serializer(

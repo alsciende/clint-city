@@ -2,8 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Api;
+namespace Sdk\Dto;
 
+/**
+ * Data class for a request sent to the API.
+ *
+ * Each request holds one or more commands that are sent together to the API.
+ */
 class Request implements \JsonSerializable
 {
     /**
@@ -51,17 +56,6 @@ class Request implements \JsonSerializable
         }
 
         $this->commands[$command->getCall()] = $command;
-    }
-
-    public function setResult(array $response)
-    {
-        foreach ($response as $call => $result) {
-            $command = $this->getCommand($call);
-
-            if ($command instanceof Command) {
-                $command->setResult($result);
-            }
-        }
     }
 
     /**

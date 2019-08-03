@@ -2,8 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Api;
+namespace Sdk\Dto;
 
+/**
+ * Data class for a generic command understood by the API.
+ *
+ * The command holds both the data of one call and the data of its result.
+ */
 class Command implements \JsonSerializable
 {
     /**

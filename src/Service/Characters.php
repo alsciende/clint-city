@@ -2,18 +2,18 @@
 
 namespace App\Service;
 
-use Sdk\Api\Client;
-use Sdk\Api\Command;
+use Sdk\Client\SingleCommandClient;
+use Sdk\Dto\Command;
 use Sdk\Model\CharacterWithDescription;
 
 class Characters
 {
     /**
-     * @var Client
+     * @var SingleCommandClient
      */
     private $client;
 
-    public function __construct(Client $client)
+    public function __construct(SingleCommandClient $client)
     {
         $this->client = $client;
     }

@@ -1,7 +1,10 @@
 <?php
 
-namespace Sdk\Api;
+namespace Sdk\Dto;
 
+/**
+ * Data class for a generic result of any command sent to the API
+ */
 class Result
 {
     /**

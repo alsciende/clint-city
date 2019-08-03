@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sdk\Message;
 
-use Sdk\Api\Command;
+use Sdk\Dto\Command;
 
 class GetCharacterVariationsQuery implements MessageInterface
 {

@@ -4,16 +4,7 @@ declare(strict_types=1);
 
 namespace Sdk\Oauth;
 
-use Sdk\Api\Command;
-use Sdk\Api\Request;
-use Sdk\Api\Response;
-use Sdk\Api\Result;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class Factory
 {
@@ -33,11 +24,6 @@ class Factory
     private $storage;
 
     /**
-     * @var Serializer
-     */
-    private $serializer;
-
-    /**
      * Factory constructor.
      *
      * @param string  $consumerKey
@@ -49,16 +35,6 @@ class Factory
         $this->consumerKey = $consumerKey;
         $this->consumerSecret = $consumerSecret;
         $this->storage = $storage;
-        $this->serializer = new Serializer(
-            [
-                new JsonSerializableNormalizer(),
-                new ObjectNormalizer(),
-                new ArrayDenormalizer(),
-            ],
-            [
-                new JsonEncoder()
-            ]
-        );
     }
 
     /**
@@ -66,7 +42,7 @@ class Factory
      *
      * @throws \OAuthException
      */
-    private function create(): Client
+    public function create(): Client
     {
         $client = new Client($this->consumerKey, $this->consumerSecret);
 
@@ -120,39 +96,5 @@ class Factory
         $this->storage->set($token);
 
         return $token;
-    }
-
-    public function execute(Request $request): void
-    {
-        $client = $this->create();
-
-        $jsonRequest = $this->serializer->serialize($request, 'json');
-
-        try {
-            $success = $client->fetch('https://api.urban-rivals.com/api/', [
-                'request' => $jsonRequest,
-            ]);
-        } catch (\OAuthException $exception) {
-            dump($client->getLastResponseInfo());
-            dump($client->getLastResponse());
-            die;
-        }
-
-        $lastResponse = $client->getLastResponse();
-
-        if (false === $success) {
-            throw new \Exception($lastResponse);
-        }
-
-        $response = $this->serializer->decode($lastResponse, 'json');
-
-        foreach ($response as $call => $result) {
-            $command = $request->getCommand($call);
-
-            if ($command instanceof Command) {
-                $command->setResult($result);
-            }
-        }
-
     }
 }

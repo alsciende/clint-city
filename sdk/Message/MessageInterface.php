@@ -2,7 +2,7 @@
 
 namespace Sdk\Message;
 
-use Sdk\Api\Command;
+use Sdk\Dto\Command;
 
 interface MessageInterface
 {
