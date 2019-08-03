@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Sdk\Client\SingleCommandClient;
-use Sdk\Dto\Command;
+use Api\Client\SingleCommandClient;
+use Api\Dto\Command;
 use Sdk\Model\MissionProgress;
 
 class Missions

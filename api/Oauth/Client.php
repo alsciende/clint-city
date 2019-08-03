@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Oauth;
+namespace Api\Oauth;
 
 class Client extends \OAuth
 {

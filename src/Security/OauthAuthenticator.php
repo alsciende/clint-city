@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Security;
 
-use Sdk\Oauth\Storage;
-use Sdk\Oauth\Token;
+use Api\Oauth\Storage;
+use Api\Oauth\Token;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

@@ -14,7 +14,7 @@ fix: vendor/bin ## (PHP) Code style fixer
 
 stan: vendor/bin ## (PHP) Static analysis
 	@echo
-	./vendor/bin/phpstan analyse -c phpstan.neon -l 7 src sdk
+	./vendor/bin/phpstan analyse -c phpstan.neon -l 7 api sdk src
 
 test: unit behat ## (PHP) Launch all test tools
 

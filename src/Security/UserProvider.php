@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Security;
 
-use Sdk\Client\SingleCommandClient;
-use Sdk\Dto\Command;
-use Sdk\Oauth\Factory;
+use Api\Client\SingleCommandClient;
+use Api\Dto\Command;
+use Api\Oauth\Factory;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

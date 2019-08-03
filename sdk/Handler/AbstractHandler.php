@@ -1,9 +1,9 @@
 <?php
 
-namespace Sdk\MessageHandler;
+namespace Sdk\Handler;
 
-use Sdk\Client\SingleCommandClient;
-use Sdk\Message\MessageInterface;
+use Api\Client\SingleCommandClient;
+use Api\Dto\Command;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -44,10 +44,10 @@ class AbstractHandler
         );
     }
 
-    protected function handle(MessageInterface $message, string $class)
+    protected function handle(Command $command, string $class)
     {
         return $this->serializer->deserialize(
-            $this->serializer->serialize($this->client->executeCommand($message->getCommand()), 'json'),
+            $this->serializer->serialize($this->client->executeCommand($command), 'json'),
             $class,
             'json'
         );

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sdk\Client;
+namespace Api\Client;
 
-use Sdk\Dto\Command;
-use Sdk\Dto\Request;
+use Api\Dto\Command;
+use Api\Dto\Request;
 
 class SingleCommandClient extends GenericClient
 {

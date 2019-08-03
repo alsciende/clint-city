@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Dto;
+namespace Api\Dto;
 
 /**
  * Data class for a request sent to the API.

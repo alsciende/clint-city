@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Oauth;
+namespace Api\Oauth;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

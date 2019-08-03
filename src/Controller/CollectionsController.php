@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use App\Service\Collections;
 use Sdk\Message\GetCharacterVariationsQuery;
-use Sdk\MessageHandler\GetCharacterVariationsHandler;
+use Sdk\Handler\GetCharacterVariationsHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -70,8 +70,7 @@ class CollectionsController extends AbstractController
      */
     public function getCharacterVariations(int $characterID, GetCharacterVariationsHandler $handler)
     {
-        $query = new GetCharacterVariationsQuery($characterID);
-        $result = $handler($query);
+        $result = $handler($characterID);
 
         dump($result);
         die;

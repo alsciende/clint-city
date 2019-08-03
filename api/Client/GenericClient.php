@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Client;
+namespace Api\Client;
 
-use Sdk\Dto\Command;
-use Sdk\Dto\Request;
-use Sdk\Oauth\Factory;
+use Api\Dto\Command;
+use Api\Dto\Request;
+use Api\Oauth\Factory;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
