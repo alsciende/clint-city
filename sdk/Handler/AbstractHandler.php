@@ -39,7 +39,7 @@ class AbstractHandler
                 new ArrayDenormalizer(),
             ],
             [
-                new JsonEncoder()
+                new JsonEncoder(),
             ]
         );
     }

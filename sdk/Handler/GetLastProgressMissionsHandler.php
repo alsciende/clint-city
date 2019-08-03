@@ -10,7 +10,7 @@ class GetLastProgressMissionsHandler extends AbstractHandler
     public function handle(int $nbMissions = 5): GetLastProgressMissionsResult
     {
         $command = new Command('missions.getLastProgressMissions', [
-            'nbMissions' => $nbMissions
+            'nbMissions' => $nbMissions,
         ]);
 
         return $this->convert($command, GetLastProgressMissionsResult::class);

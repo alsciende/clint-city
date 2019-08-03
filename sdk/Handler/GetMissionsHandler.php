@@ -14,7 +14,7 @@ class GetMissionsHandler extends AbstractHandler
     public function handle(string $group = self::GROUP_ALL): GetMissionsResult
     {
         $command = new Command('missions.getMissions', [
-            'group' => $group
+            'group' => $group,
         ]);
 
         return $this->convert($command, GetMissionsResult::class);

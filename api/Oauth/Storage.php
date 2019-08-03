@@ -15,6 +15,7 @@ class Storage
 
     /**
      * Storage constructor.
+     * @param SessionInterface $session
      */
     public function __construct(SessionInterface $session)
     {

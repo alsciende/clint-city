@@ -22,14 +22,13 @@ class GetCollectionPageHandler extends AbstractHandler
         int $nbPerPage = 12,
         int $clanID = 0,
         string $groupBy = self::GROUP_BY_ALL
-    ): GetCollectionPageResult
-    {
+    ): GetCollectionPageResult {
         $command = new Command('collections.getCollectionPage', [
-            'deckOnly' => $deckOnly,
-            'page' => $page,
+            'deckOnly'  => $deckOnly,
+            'page'      => $page,
             'nbPerPage' => $nbPerPage,
-            'clanID' => $clanID,
-            'groupBy' => $groupBy,
+            'clanID'    => $clanID,
+            'groupBy'   => $groupBy,
         ]);
 
         return $this->convert($command, GetCollectionPageResult::class);

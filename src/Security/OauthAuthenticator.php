@@ -47,6 +47,10 @@ class OauthAuthenticator extends AbstractGuardAuthenticator
         return $request->query->has('oauth_token');
     }
 
+    /**
+     * @param Request $request
+     * @return Token
+     */
     public function getCredentials(Request $request)
     {
         $token = $this->storage->get();
@@ -62,15 +66,14 @@ class OauthAuthenticator extends AbstractGuardAuthenticator
         return $token;
     }
 
+    /**
+     * @param Token                 $credentials
+     * @param UserProviderInterface $userProvider
+     * @return UserInterface|null
+     */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $oauthToken = $credentials->getToken();
-
-        if (null === $oauthToken) {
-            return null;
-        }
-
-        return $userProvider->loadUserByUsername($oauthToken);
+        return $userProvider->loadUserByUsername($credentials->getToken());
     }
 
     public function checkCredentials($credentials, UserInterface $user)

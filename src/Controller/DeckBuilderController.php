@@ -42,8 +42,6 @@ class DeckBuilderController
     /**
      * Build a deck with all the cards from a clan that are not at max level
      *
-     * @throws \Exception
-     *
      * @Route("/all/{clanId}")
      */
     public function createAll(int $clanId)
@@ -55,8 +53,6 @@ class DeckBuilderController
     /**
      * Build a deck with the best copy of each cards from all clans that are not at max level
      *
-     * @throws \Exception
-     *
      * @Route("/best")
      */
     public function createAllBest()
@@ -66,8 +62,6 @@ class DeckBuilderController
 
     /**
      * Build a deck with the best copy of each cards from a clan that are not at max level
-     *
-     * @throws \Exception
      *
      * @Route("/best/{clanId}")
      */

@@ -39,24 +39,9 @@ class GenericClient
                 new ArrayDenormalizer(),
             ],
             [
-                new JsonEncoder()
+                new JsonEncoder(),
             ]
         );
-    }
-
-    public function getFactory(): Factory
-    {
-        return $this->factory;
-    }
-
-    public function getLastContext(): array
-    {
-        return [];
-    }
-
-    public function denormalizeArray($data, $class)
-    {
-        return [];
     }
 
     public function executeRequest(Request $request): void
