@@ -7,12 +7,12 @@ use Sdk\Result\GetCharacterVariationsResult;
 
 class GetCharacterVariationsHandler extends AbstractHandler
 {
-    public function __invoke(int $characterID): GetCharacterVariationsResult
+    public function handle(int $characterID): GetCharacterVariationsResult
     {
         $command = new Command('collections.getCharacterVariations', [
             'characterID' => $characterID,
         ]);
 
-        return $this->handle($command, GetCharacterVariationsResult::class);
+        return $this->convert($command, GetCharacterVariationsResult::class);
     }
 }

@@ -16,7 +16,7 @@ class MissionsController
      */
     public function getMissions(GetMissionsHandler $handler)
     {
-        dump($handler(GetMissionsHandler::GROUP_COMPLETED));
+        dump($handler->handle(GetMissionsHandler::GROUP_COMPLETED));
         die;
     }
 
@@ -25,7 +25,7 @@ class MissionsController
      */
     public function getLastProgressMissions(GetLastProgressMissionsHandler $handler)
     {
-        dump($handler(5));
+        dump($handler->handle(5));
         die;
     }
 

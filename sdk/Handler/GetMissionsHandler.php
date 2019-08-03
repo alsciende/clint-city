@@ -11,12 +11,12 @@ class GetMissionsHandler extends AbstractHandler
     const GROUP_IN_PROGRESS = 'inprogress';
     const GROUP_COMPLETED = 'completed';
 
-    public function __invoke(string $group = self::GROUP_ALL): GetMissionsResult
+    public function handle(string $group = self::GROUP_ALL): GetMissionsResult
     {
         $command = new Command('missions.getMissions', [
             'group' => $group
         ]);
 
-        return $this->handle($command, GetMissionsResult::class);
+        return $this->convert($command, GetMissionsResult::class);
     }
 }

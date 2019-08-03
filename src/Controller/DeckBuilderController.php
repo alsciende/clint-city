@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Service\Collections;
+use App\Service\DeckBuilderService;
 use Sdk\Model\CharacterWithVariation;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,51 +16,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class DeckBuilderController
 {
     /**
-     * @var Collections
+     * @var DeckBuilderService
      */
-    private $collections;
+    private $service;
 
     /**
      * DeckBuilderController constructor.
      */
-    public function __construct(Collections $collections)
+    public function __construct(DeckBuilderService $service)
     {
-        $this->collections = $collections;
+        $this->service = $service;
     }
 
     /**
      * Build a deck with all the cards from all clans that are not at max level
      *
-     * @throws \Exception
-     *
      * @Route("/all")
      */
     public function createAllClans()
     {
-        $characterInCollectionIDs = [];
-
-        $characterVariation = $this->collections->getBestCharacterVariation(273);
-        if ($characterVariation instanceof CharacterWithVariation) {
-            $characterInCollectionIDs[] = $characterVariation->getIdPlayerCharacter();
-        }
-
-        $page = 0;
-
-        do {
-            foreach ($this->collections->getCollectionPage(false, $page++, 12) as $item) {
-                if ($item->getLevel() < $item->getLevelMax()) {
-                    $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
-                }
-            }
-        } while ($this->collections->getLastContext()['hasNextPage']);
-
-        \jp3cki\fisherYatesShuffle\shuffle($characterInCollectionIDs);
-
-        $this->collections->setSelectionAsDeck($characterInCollectionIDs);
-
-        dump($characterInCollectionIDs);
-        dump($this->collections->getLastContext());
-
+        $this->service->createDeckWithAllCardsFromAllClans();
         die;
     }
 
@@ -73,30 +48,7 @@ class DeckBuilderController
      */
     public function createAll(int $clanId)
     {
-        $characterInCollectionIDs = [];
-
-        $characterVariation = $this->collections->getBestCharacterVariation(273);
-        if ($characterVariation instanceof CharacterWithVariation) {
-            $characterInCollectionIDs[] = $characterVariation->getIdPlayerCharacter();
-        }
-
-        $page = 0;
-
-        do {
-            foreach ($this->collections->getCollectionPage(false, $page++, 12, $clanId) as $item) {
-                if ($item->getLevel() < $item->getLevelMax()) {
-                    $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
-                }
-            }
-        } while ($this->collections->getLastContext()['hasNextPage']);
-
-        \jp3cki\fisherYatesShuffle\shuffle($characterInCollectionIDs);
-
-        $this->collections->setSelectionAsDeck($characterInCollectionIDs);
-
-        dump($characterInCollectionIDs);
-        dump($this->collections->getLastContext());
-
+        $this->service->createDeckWithAllCardsFromOneClan($clanId);
         die;
     }
 
@@ -109,31 +61,7 @@ class DeckBuilderController
      */
     public function createAllBest()
     {
-        $characterInCollectionIDs = [];
-
-        $characterVariation = $this->collections->getBestCharacterVariation(273);
-        if ($characterVariation instanceof CharacterWithVariation) {
-            $characterInCollectionIDs[] = $characterVariation->getIdPlayerCharacter();
-        }
-
-        $page = 0;
-
-        do {
-            foreach ($this->collections->getCollectionPage(false, $page++, 12, Collections::CLAN_ALL, Collections::GROUP_BY_BEST) as $item) {
-                if ($item->getLevel() < $item->getLevelMax()) {
-                    $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
-                }
-            }
-        } while ($this->collections->getLastContext()['hasNextPage']);
-
-        \jp3cki\fisherYatesShuffle\shuffle($characterInCollectionIDs);
-
-        $this->collections->setSelectionAsDeck($characterInCollectionIDs);
-
-        dump($characterInCollectionIDs);
-        dump($this->collections->getLastContext());
-
-        die;
+        $this->service->createDeckWithBestCardFromAllClans();
     }
 
     /**
@@ -145,30 +73,6 @@ class DeckBuilderController
      */
     public function createBest(int $clanId)
     {
-        $characterInCollectionIDs = [];
-
-        $characterVariation = $this->collections->getBestCharacterVariation(273);
-        if ($characterVariation instanceof CharacterWithVariation) {
-            $characterInCollectionIDs[] = $characterVariation->getIdPlayerCharacter();
-        }
-
-        $page = 0;
-
-        do {
-            foreach ($this->collections->getCollectionPage(false, $page++, 12, $clanId, Collections::GROUP_BY_BEST) as $item) {
-                if ($item->getLevel() < $item->getLevelMax()) {
-                    $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
-                }
-            }
-        } while ($this->collections->getLastContext()['hasNextPage']);
-
-        \jp3cki\fisherYatesShuffle\shuffle($characterInCollectionIDs);
-
-        $this->collections->setSelectionAsDeck($characterInCollectionIDs);
-
-        dump($characterInCollectionIDs);
-        dump($this->collections->getLastContext());
-
-        die;
+        $this->service->createDeckWithBestCardFromOneClan($clanId);
     }
 }

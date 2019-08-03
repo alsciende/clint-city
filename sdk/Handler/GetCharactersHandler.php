@@ -7,7 +7,7 @@ use Sdk\Result\GetCharactersResult;
 
 class GetCharactersHandler extends AbstractHandler
 {
-    public function __invoke(
+    public function handle(
         array $charactersIDs = [],
         int $clanID = null,
         bool $maxLevels = true
@@ -18,6 +18,6 @@ class GetCharactersHandler extends AbstractHandler
             'maxLevels'     => $maxLevels,
         ]);
 
-        return $this->handle($command, GetCharactersResult::class);
+        return $this->convert($command, GetCharactersResult::class);
     }
 }

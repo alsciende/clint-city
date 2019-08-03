@@ -44,7 +44,7 @@ class AbstractHandler
         );
     }
 
-    protected function handle(Command $command, string $class)
+    protected function convert(Command $command, string $class)
     {
         return $this->serializer->deserialize(
             $this->serializer->serialize($this->client->executeCommand($command), 'json'),

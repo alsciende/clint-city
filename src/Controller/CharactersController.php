@@ -17,7 +17,7 @@ class CharactersController
      */
     public function getCharacters(GetCharactersHandler $handler)
     {
-        dump($handler([], 42));
+        dump($handler->handle([], 42));
         die;
     }
 
@@ -26,7 +26,7 @@ class CharactersController
      */
     public function getCharactersByClan(int $clanId, GetCharactersHandler $handler)
     {
-        dump($handler([], $clanId));
+        dump($handler->handle([], $clanId));
         die;
     }
 }

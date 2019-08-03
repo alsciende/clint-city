@@ -4,75 +4,51 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Service\Collections;
-use Sdk\Message\GetCharacterVariationsQuery;
+use Sdk\Handler\GetClanSummaryHandler;
+use Sdk\Handler\GetCollectionPageHandler;
+use Sdk\Handler\GetPresetsHandler;
 use Sdk\Handler\GetCharacterVariationsHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class CollectionsController
- *
  * @Route("/collections")
  */
 class CollectionsController extends AbstractController
 {
     /**
-     * @var Collections
-     */
-    private $collections;
-
-    /**
-     * CharactersController constructor.
-     */
-    public function __construct(Collections $collections)
-    {
-        $this->collections = $collections;
-    }
-
-    /**
-     * @throws \Exception
-     *
      * @Route("/getClanSummary")
      */
-    public function getClanSummary()
+    public function getClanSummary(GetClanSummaryHandler $handler)
     {
-        dump($this->collections->getClanSummary(38));
+        dump($handler->handle(38));
         die;
     }
 
     /**
-     * @throws \Exception
-     *
      * @Route("/getPresets")
      */
-    public function getPresets()
+    public function getPresets(GetPresetsHandler $handler)
     {
-        dump($this->collections->getPresets());
+        dump($handler->handle());
         die;
     }
 
     /**
-     * @throws \Exception
-     *
      * @Route("/getCollectionPage")
      */
-    public function getCollectionPage()
+    public function getCollectionPage(GetCollectionPageHandler $handler)
     {
-        dump($this->collections->getCollectionPage());
+        dump($handler->handle());
         die;
     }
 
     /**
-     * @throws \Exception
-     *
      * @Route("/getCharacterVariations/{characterID}")
      */
     public function getCharacterVariations(int $characterID, GetCharacterVariationsHandler $handler)
     {
-        $result = $handler($characterID);
-
-        dump($result);
+        dump($handler->handle($characterID));
         die;
     }
 }
