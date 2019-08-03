@@ -6,6 +6,7 @@ namespace Api\Client;
 
 use Api\Dto\Command;
 use Api\Dto\Request;
+use Api\Exception\ApiException;
 use Api\Oauth\Factory;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
@@ -69,9 +70,7 @@ class GenericClient
                 'request' => $jsonRequest,
             ]);
         } catch (\OAuthException $exception) {
-            dump($client->getLastResponseInfo());
-            dump($client->getLastResponse());
-            die;
+            throw new ApiException($client->getLastResponse(), $client->getLastResponseInfo(), $exception);
         }
 
         $lastResponse = $client->getLastResponse();
