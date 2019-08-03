@@ -9,7 +9,7 @@ namespace Api\Dto;
  *
  * The command holds both the data of one call and the data of its result.
  */
-class Command implements \JsonSerializable
+class Command implements CommandInterface
 {
     /**
      * @var string

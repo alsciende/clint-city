@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Sdk\Handler\GetLastProgressMissionsHandler;
-use Sdk\Handler\GetMissionsHandler;
+use Sdk\Factory\GetLastProgressMissionsFactory;
+use Sdk\Factory\GetMissionsFactory;
+use Sdk\Processor;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -14,18 +15,18 @@ class MissionsController
     /**
      * @Route("/getMissions")
      */
-    public function getMissions(GetMissionsHandler $handler)
+    public function getMissions(Processor $processor)
     {
-        dump($handler->handle(GetMissionsHandler::GROUP_COMPLETED));
+        dump($processor->process(GetMissionsFactory::create(GetMissionsFactory::GROUP_COMPLETED)));
         die;
     }
 
     /**
      * @Route("/getLastProgressMissions")
      */
-    public function getLastProgressMissions(GetLastProgressMissionsHandler $handler)
+    public function getLastProgressMissions(Processor $processor)
     {
-        dump($handler->handle(5));
+        dump($processor->process(GetLastProgressMissionsFactory::create(5)));
         die;
     }
 

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Sdk\Handler\GetClanSummaryHandler;
-use Sdk\Handler\GetCollectionPageHandler;
-use Sdk\Handler\GetPresetsHandler;
-use Sdk\Handler\GetCharacterVariationsHandler;
+use Sdk\Factory\GetClanSummaryFactory;
+use Sdk\Factory\GetCollectionPageFactory;
+use Sdk\Factory\GetPresetsFactory;
+use Sdk\Factory\GetCharacterVariationsFactory;
+use Sdk\Processor;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,36 +20,36 @@ class CollectionsController extends AbstractController
     /**
      * @Route("/getClanSummary")
      */
-    public function getClanSummary(GetClanSummaryHandler $handler)
+    public function getClanSummary(Processor $processor)
     {
-        dump($handler->handle(38));
+        dump($processor->process(GetClanSummaryFactory::create(38)));
         die;
     }
 
     /**
      * @Route("/getPresets")
      */
-    public function getPresets(GetPresetsHandler $handler)
+    public function getPresets(Processor $processor)
     {
-        dump($handler->handle());
+        dump($processor->process(GetPresetsFactory::create()));
         die;
     }
 
     /**
      * @Route("/getCollectionPage")
      */
-    public function getCollectionPage(GetCollectionPageHandler $handler)
+    public function getCollectionPage(Processor $processor)
     {
-        dump($handler->handle());
+        dump($processor->process(GetCollectionPageFactory::create()));
         die;
     }
 
     /**
      * @Route("/getCharacterVariations/{characterID}")
      */
-    public function getCharacterVariations(int $characterID, GetCharacterVariationsHandler $handler)
+    public function getCharacterVariations(int $characterID, Processor $processor)
     {
-        dump($handler->handle($characterID));
+        dump($processor->process(GetCharacterVariationsFactory::create($characterID)));
         die;
     }
 }

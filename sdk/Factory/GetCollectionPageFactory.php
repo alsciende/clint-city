@@ -1,11 +1,12 @@
 <?php
 
-namespace Sdk\Handler;
+namespace Sdk\Factory;
 
 use Api\Dto\Command;
+use Sdk\Command\GetCollectionPageCommand;
 use Sdk\Result\GetCollectionPageResult;
 
-class GetCollectionPageHandler extends AbstractHandler
+class GetCollectionPageFactory
 {
     const CLAN_ALL = 0;
 
@@ -16,21 +17,19 @@ class GetCollectionPageHandler extends AbstractHandler
     const GROUP_BY_NODECK = 'nodeck';
     const GROUP_BY_BEST = 'best';
 
-    public function handle(
+    static public function create(
         bool $deckOnly = false,
         int $page = 0,
         int $nbPerPage = 12,
         int $clanID = 0,
         string $groupBy = self::GROUP_BY_ALL
-    ): GetCollectionPageResult {
-        $command = new Command('collections.getCollectionPage', [
+    ) {
+        return new GetCollectionPageCommand([
             'deckOnly'  => $deckOnly,
             'page'      => $page,
             'nbPerPage' => $nbPerPage,
             'clanID'    => $clanID,
             'groupBy'   => $groupBy,
         ]);
-
-        return $this->convert($command, GetCollectionPageResult::class);
     }
 }

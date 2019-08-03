@@ -1,9 +1,10 @@
 <?php
 
-namespace Sdk\Handler;
+namespace Sdk;
 
 use Api\Client\SingleCommandClient;
-use Api\Dto\Command;
+use Sdk\Command\CommandInterface;
+use Sdk\Result\ResultInterface;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -11,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class AbstractHandler
+class Processor
 {
     /**
      * @var SingleCommandClient
@@ -44,12 +45,14 @@ class AbstractHandler
         );
     }
 
-    protected function convert(Command $command, string $class)
+    public function process(CommandInterface $command)
     {
-        return $this->serializer->deserialize(
+        $result = $this->serializer->deserialize(
             $this->serializer->serialize($this->client->executeCommand($command), 'json'),
-            $class,
+            $command->getClassName(),
             'json'
         );
+
+        return $command->setResponse($result);
     }
 }

@@ -12,14 +12,14 @@ namespace Api\Dto;
 class Request implements \JsonSerializable
 {
     /**
-     * @var Command[]
+     * @var CommandInterface[]
      */
     private $commands;
 
     /**
      * Request constructor.
      *
-     * @param Command ...$commands
+     * @param CommandInterface ...$commands
      */
     public function __construct(...$commands)
     {
@@ -29,7 +29,7 @@ class Request implements \JsonSerializable
     }
 
     /**
-     * @return Command[]
+     * @return CommandInterface[]
      */
     public function getCommands(): array
     {
@@ -39,17 +39,17 @@ class Request implements \JsonSerializable
     /**
      * @param string $call
      *
-     * @return Command|null
+     * @return CommandInterface|null
      */
-    public function getCommand(string $call): ?Command
+    public function getCommand(string $call): ?CommandInterface
     {
         return $this->commands[$call] ?? null;
     }
 
     /**
-     * @param Command $command
+     * @param CommandInterface $command
      */
-    public function addCommand(Command $command)
+    public function addCommand(CommandInterface $command)
     {
         if (isset($this->commands[$command->getCall()])) {
             throw new \LogicException('Cannot request 2 commands with the same call ' . $command->getCall());
@@ -63,7 +63,7 @@ class Request implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        return array_map(function (Command $command) {
+        return array_map(function (CommandInterface $command) {
             return $command->jsonSerialize();
         }, array_values($this->commands));
     }

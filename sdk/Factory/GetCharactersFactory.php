@@ -1,23 +1,23 @@
 <?php
 
-namespace Sdk\Handler;
+namespace Sdk\Factory;
 
 use Api\Dto\Command;
+use Sdk\Command\CommandInterface;
+use Sdk\Command\GetCharactersCommand;
 use Sdk\Result\GetCharactersResult;
 
-class GetCharactersHandler extends AbstractHandler
+class GetCharactersFactory
 {
-    public function handle(
+    static public function create(
         array $charactersIDs = [],
         int $clanID = null,
         bool $maxLevels = true
-    ): GetCharactersResult {
-        $command = new Command('characters.getCharacters', [
+    ) {
+        return new GetCharactersCommand([
             'charactersIDs' => $charactersIDs,
             'clanID'        => $clanID,
             'maxLevels'     => $maxLevels,
         ]);
-
-        return $this->convert($command, GetCharactersResult::class);
     }
 }
