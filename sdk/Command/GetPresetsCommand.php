@@ -7,6 +7,14 @@ use Sdk\Result\GetPresetsResult;
 
 class GetPresetsCommand extends AbstractCommand
 {
+    static public function create(
+        ?int $deckFormatID = null
+    ) {
+        return new self([
+            'deckFormatID' => $deckFormatID,
+        ]);
+    }
+
     static public function getCallName(): string
     {
         return 'collections.getPresets';

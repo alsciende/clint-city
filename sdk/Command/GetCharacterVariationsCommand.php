@@ -7,6 +7,14 @@ use Sdk\Result\GetCharacterVariationsResult;
 
 class GetCharacterVariationsCommand extends AbstractCommand
 {
+    static public function create(
+        int $characterID
+    ) {
+        return new self([
+            'characterID' => $characterID,
+        ]);
+    }
+
     static public function getCallName(): string
     {
         return 'collections.getCharacterVariations';

@@ -9,7 +9,7 @@ class ApiException extends \RuntimeException
      */
     private $info;
 
-    public function __construct(string $message, array $info, \OAuthException $previous)
+    public function __construct(string $message, array $info, ?\OAuthException $previous = null)
     {
         $this->info = $info;
         parent::__construct($message, $info["http_code"] ?? 0, $previous);

@@ -7,6 +7,18 @@ use Sdk\Result\GetCharactersResult;
 
 class GetCharactersCommand extends AbstractCommand
 {
+    static public function create(
+        array $charactersIDs = [],
+        int $clanID = null,
+        bool $maxLevels = true
+    ) {
+        return new self([
+            'charactersIDs' => $charactersIDs,
+            'clanID'        => $clanID,
+            'maxLevels'     => $maxLevels,
+        ]);
+    }
+
     static public function getCallName(): string
     {
         return 'characters.getCharacters';

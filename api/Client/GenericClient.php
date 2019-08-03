@@ -61,7 +61,7 @@ class GenericClient
         $lastResponse = $client->getLastResponse();
 
         if (false === $success) {
-            throw new \Exception($lastResponse);
+            throw new ApiException($lastResponse, $client->getLastResponseInfo());
         }
 
         $response = $this->serializer->decode($lastResponse, 'json');

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Sdk\Factory\GetCharactersFactory;
+use Sdk\Command\GetCharactersCommand;
 use Sdk\Processor\Processor;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,12 +18,13 @@ class CharactersController
      */
     public function getCharacters(Processor $processor)
     {
-        $result = GetCharactersFactory
-            ::create([], 42)
+        $result = GetCharactersCommand
+            ::create([])
             ->process($processor)
             ->getResult();
 
-        dump($result);
+        dump(count($result->getItems()));
+        dump($result->getItems());
         die;
     }
 
@@ -32,7 +33,7 @@ class CharactersController
      */
     public function getCharactersByClan(int $clanId, Processor $processor)
     {
-        $result = GetCharactersFactory
+        $result = GetCharactersCommand
             ::create([], $clanId)
             ->process($processor)
             ->getResult();

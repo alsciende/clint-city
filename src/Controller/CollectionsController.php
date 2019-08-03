@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Sdk\Factory\GetClanSummaryFactory;
-use Sdk\Factory\GetCollectionPageFactory;
-use Sdk\Factory\GetPresetsFactory;
-use Sdk\Factory\GetCharacterVariationsFactory;
+use Sdk\Command\GetCharacterVariationsCommand;
+use Sdk\Command\GetClanSummaryCommand;
+use Sdk\Command\GetCollectionPageCommand;
+use Sdk\Command\GetPresetsCommand;
 use Sdk\Processor\Processor;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +22,7 @@ class CollectionsController extends AbstractController
      */
     public function getClanSummary(Processor $processor)
     {
-        $result = GetClanSummaryFactory
+        $result = GetClanSummaryCommand
             ::create(38)
             ->process($processor)
             ->getResult();
@@ -36,7 +36,7 @@ class CollectionsController extends AbstractController
      */
     public function getPresets(Processor $processor)
     {
-        $result = GetPresetsFactory
+        $result = GetPresetsCommand
             ::create()
             ->process($processor)
             ->getResult();
@@ -50,7 +50,7 @@ class CollectionsController extends AbstractController
      */
     public function getCollectionPage(Processor $processor)
     {
-        $result = GetCollectionPageFactory
+        $result = GetCollectionPageCommand
             ::create()
             ->process($processor)
             ->getResult();
@@ -64,7 +64,7 @@ class CollectionsController extends AbstractController
      */
     public function getCharacterVariations(int $characterID, Processor $processor)
     {
-        $result = GetCharacterVariationsFactory
+        $result = GetCharacterVariationsCommand
             ::create($characterID)
             ->process($processor)
             ->getResult();

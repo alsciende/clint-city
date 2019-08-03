@@ -7,6 +7,14 @@ use Sdk\Result\GetLastProgressMissionsResult;
 
 class GetLastProgressMissionsCommand extends AbstractCommand
 {
+    static public function create(
+        int $nbMissions = 5
+    ) {
+        return new self([
+            'nbMissions' => $nbMissions,
+        ]);
+    }
+
     static public function getCallName(): string
     {
         return 'missions.getLastProgressMissions';

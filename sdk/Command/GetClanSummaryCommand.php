@@ -7,6 +7,17 @@ use Sdk\Result\GetClanSummaryResult;
 
 class GetClanSummaryCommand extends AbstractCommand
 {
+    static public function create(
+        int $clanID = 0,
+        bool $ownedOnly = false
+    ) {
+        return new self([
+            'clanID'           => $clanID,
+            'addBestCharacter' => false,
+            'ownedOnly'        => $ownedOnly,
+        ]);
+    }
+
     static public function getCallName(): string
     {
         return 'collections.getClanSummary';

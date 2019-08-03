@@ -2,6 +2,9 @@
 
 namespace App\Service;
 
+use Sdk\Command\GetCharacterVariationsCommand;
+use Sdk\Command\GetCollectionPageCommand;
+use Sdk\Command\SetSelectionAsDeckCommand;
 use Sdk\Factory\GetCharacterVariationsFactory;
 use Sdk\Factory\GetCollectionPageFactory;
 use Sdk\Factory\SetSelectionAsDeckFactory;
@@ -28,7 +31,7 @@ class DeckBuilderService
      */
     public function getBestCharacterVariation(int $characterID): ?CharacterWithVariation
     {
-        $result = GetCharacterVariationsFactory
+        $result = GetCharacterVariationsCommand
             ::create($characterID)
             ->process($this->processor)
             ->getResult();
@@ -58,7 +61,7 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $result = GetCollectionPageFactory
+            $result = GetCollectionPageCommand
                 ::create(false, $page++, 12)
                 ->process($this->processor)
                 ->getResult();
@@ -85,7 +88,7 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $result = GetCollectionPageFactory
+            $result = GetCollectionPageCommand
                 ::create(false, $page++, 12, $clanId)
                 ->process($this->processor)
                 ->getResult();
@@ -112,8 +115,8 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $result = GetCollectionPageFactory
-                ::create(false, $page++, 12, GetCollectionPageFactory::CLAN_ALL, GetCollectionPageFactory::GROUP_BY_BEST)
+            $result = GetCollectionPageCommand
+                ::create(false, $page++, 12, GetCollectionPageCommand::CLAN_ALL, GetCollectionPageCommand::GROUP_BY_BEST)
                 ->process($this->processor)
                 ->getResult();
 
@@ -139,8 +142,8 @@ class DeckBuilderService
         $page = 0;
 
         do {
-            $result = GetCollectionPageFactory
-                ::create(false, $page++, 12, $clanId, GetCollectionPageFactory::GROUP_BY_BEST)
+            $result = GetCollectionPageCommand
+                ::create(false, $page++, 12, $clanId, GetCollectionPageCommand::GROUP_BY_BEST)
                 ->process($this->processor)
                 ->getResult();
 
@@ -158,7 +161,7 @@ class DeckBuilderService
     {
         \jp3cki\fisherYatesShuffle\shuffle($characterInCollectionIDs);
 
-        $result = SetSelectionAsDeckFactory
+        $result = SetSelectionAsDeckCommand
             ::create($characterInCollectionIDs)
             ->process($this->processor)
             ->getResult();
