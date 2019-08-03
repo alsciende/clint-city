@@ -2,38 +2,50 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Api;
+namespace App\Service;
 
+use Sdk\Api\Client;
+use Sdk\Api\Command;
 use Sdk\Model\CharacterWithDescriptionAndSummary;
 use Sdk\Model\CharacterWithDescriptionAndSummaryAndVariation;
 use Sdk\Model\CharacterWithVariation;
 use Sdk\Model\MissionProgress;
 use Sdk\Model\Preset;
 
-class Missions extends Client
+class Missions
 {
     const GROUP_ALL = 'all';
     const GROUP_IN_PROGRESS = 'inprogress';
     const GROUP_COMPLETED = 'completed';
 
     /**
+     * @var Client
+     */
+    private $client;
+
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
      * @return array
      */
     public function getMissions(string $group = self::GROUP_ALL): array
     {
-        $items = $this->executeCommand(new Command('missions.getMissions', [
+        $items = $this->client->executeCommand(new Command('missions.getMissions', [
             'group' => $group
         ]));
 
-        return $this->denormalizeArray($items, MissionProgress::class);
+        return $this->client->denormalizeArray($items, MissionProgress::class);
     }
 
     public function getLastProgressMissions(int $nbMissions = 5): array
     {
-        $items = $this->executeCommand(new Command('missions.getLastProgressMissions', [
+        $items = $this->client->executeCommand(new Command('missions.getLastProgressMissions', [
             'nbMissions' => $nbMissions
         ]));
 
-        return $this->denormalizeArray($items, MissionProgress::class);
+        return $this->client->denormalizeArray($items, MissionProgress::class);
     }
 }

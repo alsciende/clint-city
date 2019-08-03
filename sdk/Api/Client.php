@@ -40,7 +40,7 @@ class Client
     {
         return [];
     }
-    
+
     public function denormalizeArray($data, $class)
     {
         return [];

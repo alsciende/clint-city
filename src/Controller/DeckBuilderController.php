@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Sdk\Api\Collections;
+use App\Service\Collections;
 use Sdk\Model\CharacterWithVariation;
 use Symfony\Component\Routing\Annotation\Route;
 

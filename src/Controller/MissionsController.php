@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sdk\Api\Missions;
+use App\Service\Missions;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

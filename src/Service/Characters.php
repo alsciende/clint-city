@@ -1,11 +1,23 @@
 <?php
 
-namespace Sdk\Api;
+namespace App\Service;
 
+use Sdk\Api\Client;
+use Sdk\Api\Command;
 use Sdk\Model\CharacterWithDescription;
 
-class Characters extends Client
+class Characters
 {
+    /**
+     * @var Client
+     */
+    private $client;
+
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * @param array    $charactersIDs
      * @param int|null $clanID
@@ -18,13 +30,13 @@ class Characters extends Client
         bool $maxLevels = true
     ): array
     {
-        $items = $this->executeCommand(new Command('characters.getCharacters', [
+        $items = $this->client->executeCommand(new Command('characters.getCharacters', [
             'charactersIDs' => $charactersIDs,
             'clanID' => $clanID,
             'maxLevels' => $maxLevels,
         ]));
 
-        return $this->denormalizeArray($items, CharacterWithDescription::class);
+        return $this->client->denormalizeArray($items, CharacterWithDescription::class);
     }
 
 }

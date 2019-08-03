@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Sdk\Api\Characters;
+use App\Service\Characters;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

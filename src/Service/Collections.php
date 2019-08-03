@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Sdk\Api;
+namespace App\Service;
 
+use Sdk\Api\Client;
+use Sdk\Api\Command;
 use Sdk\Model\CharacterWithDescriptionAndSummary;
 use Sdk\Model\CharacterWithDescriptionAndSummaryAndVariation;
 use Sdk\Model\CharacterWithVariation;
 use Sdk\Model\Preset;
 
-class Collections extends Client
+class Collections
 {
     const GROUP_BY_ALL = 'all';
     const GROUP_BY_DOUBLE = 'double';
@@ -21,17 +23,32 @@ class Collections extends Client
     const CLAN_ALL = 0;
 
     /**
+     * @var Client
+     */
+    private $client;
+
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
+    public function getLastContext(): array
+    {
+        return $this->client->getLastContext();
+    }
+
+    /**
      * @param int $characterID
      *
      * @return CharacterWithVariation[]
      */
     public function getCharacterVariations(int $characterID): array
     {
-        $items = $this->executeCommand(new Command('collections.getCharacterVariations', [
+        $items = $this->client->executeCommand(new Command('collections.getCharacterVariations', [
             'characterID' => $characterID,
         ]));
 
-        return $this->denormalizeArray($items, CharacterWithVariation::class);
+        return $this->client->denormalizeArray($items, CharacterWithVariation::class);
     }
 
     /**
@@ -70,7 +87,7 @@ class Collections extends Client
         int $clanID = 0,
         string $groupBy = self::GROUP_BY_ALL
     ): array {
-        $items = $this->executeCommand(new Command('collections.getCollectionPage', [
+        $items = $this->client->executeCommand(new Command('collections.getCollectionPage', [
             'deckOnly' => $deckOnly,
             'page' => $page,
             'nbPerPage' => $nbPerPage,
@@ -78,7 +95,7 @@ class Collections extends Client
             'groupBy' => $groupBy,
         ]));
 
-        return $this->denormalizeArray($items, CharacterWithVariation::class);
+        return $this->client->denormalizeArray($items, CharacterWithVariation::class);
     }
 
     /**
@@ -86,7 +103,7 @@ class Collections extends Client
      */
     public function setSelectionAsDeck(array $characterInCollectionIDs = []): void
     {
-        $this->executeCommand(new Command('collections.setSelectionAsDeck', [
+        $this->client->executeCommand(new Command('collections.setSelectionAsDeck', [
             'characterInCollectionIDs' => $characterInCollectionIDs,
         ]));
     }
@@ -100,13 +117,13 @@ class Collections extends Client
      */
     public function getClanSummary(int $clanID = 0, bool $addBestCharacter = false, bool $ownedOnly = false)
     {
-        $items = $this->executeCommand(new Command('collections.getClanSummary', [
+        $items = $this->client->executeCommand(new Command('collections.getClanSummary', [
             'clanID' => $clanID,
             'addBestCharacter' => $addBestCharacter,
             'ownedOnly' => $ownedOnly,
         ]));
 
-        return $this->denormalizeArray($items, $addBestCharacter ? CharacterWithDescriptionAndSummaryAndVariation::class : CharacterWithDescriptionAndSummary::class);
+        return $this->client->denormalizeArray($items, $addBestCharacter ? CharacterWithDescriptionAndSummaryAndVariation::class : CharacterWithDescriptionAndSummary::class);
     }
 
     /**
@@ -116,10 +133,10 @@ class Collections extends Client
      */
     public function getPresets(int $deckFormatID = null)
     {
-        $items = $this->executeCommand(new Command('collections.getPresets', [
+        $items = $this->client->executeCommand(new Command('collections.getPresets', [
             'deckFormatID' => $deckFormatID,
         ]));
 
-        return $this->denormalizeArray($items, Preset::class);
+        return $this->client->denormalizeArray($items, Preset::class);
     }
 }
