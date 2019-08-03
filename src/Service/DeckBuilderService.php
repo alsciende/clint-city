@@ -6,7 +6,7 @@ use Sdk\Factory\GetCharacterVariationsFactory;
 use Sdk\Factory\GetCollectionPageFactory;
 use Sdk\Factory\SetSelectionAsDeckFactory;
 use Sdk\Model\CharacterWithVariation;
-use Sdk\Processor;
+use Sdk\Processor\Processor;
 
 class DeckBuilderService
 {
@@ -30,7 +30,7 @@ class DeckBuilderService
     {
         $command = GetCharacterVariationsFactory::create($characterID);
         $this->processor->process($command);
-        $result = $command->getResponse();
+        $result = $command->getResult();
         $characterVariations = $result->getItems();
 
         if (empty($characterVariations)) {
@@ -57,8 +57,9 @@ class DeckBuilderService
 
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12);
-            $this->processor->process($command);
-            $result = $command->getResponse();
+            $result = $command->process($this->processor);
+ //           $this->processor->process($command);
+//            $result = $command->getResult();
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -83,7 +84,7 @@ class DeckBuilderService
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12, $clanId);
             $this->processor->process($command);
-            $result = $command->getResponse();
+            $result = $command->getResult();
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -108,7 +109,7 @@ class DeckBuilderService
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12, GetCollectionPageFactory::CLAN_ALL, GetCollectionPageFactory::GROUP_BY_BEST);
             $this->processor->process($command);
-            $result = $command->getResponse();
+            $result = $command->getResult();
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -133,7 +134,7 @@ class DeckBuilderService
         do {
             $command = GetCollectionPageFactory::create(false, $page++, 12, $clanId, GetCollectionPageFactory::GROUP_BY_BEST);
             $this->processor->process($command);
-            $result = $command->getResponse();
+            $result = $command->getResult();
             foreach ($result->getItems() as $item) {
                 if ($item->getLevel() < $item->getLevelMax()) {
                     $characterInCollectionIDs[] = $item->getIdPlayerCharacter();
@@ -150,7 +151,7 @@ class DeckBuilderService
 
         $command = SetSelectionAsDeckFactory::create($characterInCollectionIDs);
         $this->processor->process($command);
-        $result = $command->getResponse();
+        $result = $command->getResult();
 
         dump($characterInCollectionIDs);
         dump($result->getContext());

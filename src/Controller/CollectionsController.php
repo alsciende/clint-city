@@ -8,7 +8,7 @@ use Sdk\Factory\GetClanSummaryFactory;
 use Sdk\Factory\GetCollectionPageFactory;
 use Sdk\Factory\GetPresetsFactory;
 use Sdk\Factory\GetCharacterVariationsFactory;
-use Sdk\Processor;
+use Sdk\Processor\Processor;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 

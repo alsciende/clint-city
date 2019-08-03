@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetClanSummaryWithBestCharacterResult;
 
 class GetClanSummaryWithBestCharacterCommand extends AbstractCommand
@@ -16,8 +17,15 @@ class GetClanSummaryWithBestCharacterCommand extends AbstractCommand
         return GetClanSummaryWithBestCharacterResult::class;
     }
 
-    public function getResponse(): GetClanSummaryWithBestCharacterResult
+    public function getResult(): GetClanSummaryWithBestCharacterResult
     {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): GetClanSummaryWithBestCharacterResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetMissionsResult;
 
 class GetMissionsCommand extends AbstractCommand
@@ -16,8 +17,15 @@ class GetMissionsCommand extends AbstractCommand
         return GetMissionsResult::class;
     }
 
-    public function getResponse(): GetMissionsResult
+    public function getResult(): GetMissionsResult
     {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): GetMissionsResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Sdk;
+namespace Sdk\Processor;
 
 use Api\Client\SingleCommandClient;
 use Sdk\Command\CommandInterface;
-use Sdk\Result\ResultInterface;
+use Sdk\Processor\ProcessorInterface;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class Processor
+class Processor implements ProcessorInterface
 {
     /**
      * @var SingleCommandClient

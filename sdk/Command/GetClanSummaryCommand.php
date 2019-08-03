@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetClanSummaryResult;
 
 class GetClanSummaryCommand extends AbstractCommand
@@ -16,8 +17,15 @@ class GetClanSummaryCommand extends AbstractCommand
         return GetClanSummaryResult::class;
     }
 
-    public function getResponse(): GetClanSummaryResult
+    public function getResult(): GetClanSummaryResult
     {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): GetClanSummaryResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }

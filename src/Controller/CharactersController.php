@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Sdk\Factory\GetCharactersFactory;
-use Sdk\Processor;
+use Sdk\Processor\Processor;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

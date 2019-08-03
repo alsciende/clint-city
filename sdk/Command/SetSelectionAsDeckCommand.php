@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\SetSelectionAsDeckResult;
 
 class SetSelectionAsDeckCommand extends AbstractCommand
@@ -16,8 +17,15 @@ class SetSelectionAsDeckCommand extends AbstractCommand
         return SetSelectionAsDeckResult::class;
     }
 
-    public function getResponse(): SetSelectionAsDeckResult
+    public function getResult(): SetSelectionAsDeckResult
     {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): SetSelectionAsDeckResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }

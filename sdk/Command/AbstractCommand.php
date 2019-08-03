@@ -3,6 +3,7 @@
 namespace Sdk\Command;
 
 use Api\Dto\Command;
+use Sdk\Processor\ProcessorInterface;
 
 abstract class AbstractCommand extends Command implements CommandInterface
 {
@@ -21,4 +22,6 @@ abstract class AbstractCommand extends Command implements CommandInterface
     {
         parent::__construct(static::getCallName(), $params, $contextFilter, $itemsFilter);
     }
+
+    abstract public function process(ProcessorInterface $processor);
 }

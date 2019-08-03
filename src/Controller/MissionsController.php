@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Sdk\Factory\GetLastProgressMissionsFactory;
 use Sdk\Factory\GetMissionsFactory;
-use Sdk\Processor;
+use Sdk\Processor\Processor;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetCollectionPageResult;
 
 class GetCollectionPageCommand extends AbstractCommand
@@ -16,8 +17,10 @@ class GetCollectionPageCommand extends AbstractCommand
         return GetCollectionPageResult::class;
     }
 
-    public function getResponse(): GetCollectionPageResult
+    public function process(ProcessorInterface $processor): GetCollectionPageResult
     {
+        $processor->process($this);
+
         return $this->result;
     }
 }

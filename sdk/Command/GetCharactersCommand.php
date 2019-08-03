@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetCharactersResult;
 
 class GetCharactersCommand extends AbstractCommand
@@ -16,8 +17,16 @@ class GetCharactersCommand extends AbstractCommand
         return GetCharactersResult::class;
     }
 
-    public function getResponse(): GetCharactersResult
+    public function getResult(): GetCharactersResult
     {
+        return $this->result;
+    }
+
+
+    public function process(ProcessorInterface $processor): GetCharactersResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }

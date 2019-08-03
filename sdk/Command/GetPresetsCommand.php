@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetPresetsResult;
 
 class GetPresetsCommand extends AbstractCommand
@@ -16,8 +17,15 @@ class GetPresetsCommand extends AbstractCommand
         return GetPresetsResult::class;
     }
 
-    public function getResponse(): GetPresetsResult
+    public function getResult(): GetPresetsResult
     {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): GetPresetsResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }

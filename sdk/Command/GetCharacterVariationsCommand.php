@@ -2,6 +2,7 @@
 
 namespace Sdk\Command;
 
+use Sdk\Processor\ProcessorInterface;
 use Sdk\Result\GetCharacterVariationsResult;
 
 class GetCharacterVariationsCommand extends AbstractCommand
@@ -16,8 +17,15 @@ class GetCharacterVariationsCommand extends AbstractCommand
         return GetCharacterVariationsResult::class;
     }
 
-    public function getResponse(): GetCharacterVariationsResult
+    public function getResult(): GetCharacterVariationsResult
     {
+        return $this->result;
+    }
+
+    public function process(ProcessorInterface $processor): GetCharacterVariationsResult
+    {
+        $processor->process($this);
+
         return $this->result;
     }
 }
