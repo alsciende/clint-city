@@ -1,10 +1,9 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        urbanrivals:
+        users_in_memory: { memory: null }
+        urban_rivals:
             id: App\Security\UserProvider
-#    encoders:
-#        App\Security\User: bcrypt
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -15,11 +14,18 @@ security:
         main:
             anonymous: true
             guard:
+                provider: urban_rivals
                 authenticators:
                     - App\Security\OauthAuthenticator
             logout:
                 path:   /logout
                 target: /
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

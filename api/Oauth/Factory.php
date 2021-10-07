@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace Api\Oauth;
 
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-class Factory
+class Factory implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * @var string
      */

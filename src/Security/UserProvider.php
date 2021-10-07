@@ -7,12 +7,16 @@ namespace App\Security;
 use Api\Client\SingleCommandClient;
 use Api\Dto\Command;
 use Api\Oauth\Factory;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class UserProvider implements UserProviderInterface
+class UserProvider implements UserProviderInterface, LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * @var Factory
      */
