@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\DeckBuilderService;
-use Sdk\Model\CharacterWithVariation;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

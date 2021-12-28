@@ -12,14 +12,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MissionsController
 {
+    private Processor $processor;
+
+    public function __construct(Processor $processor)
+    {
+        $this->processor = $processor;
+    }
+
     /**
      * @Route("/getMissions")
      */
-    public function getMissions(Processor $processor)
+    public function getMissions()
     {
         $result = GetMissionsCommand
             ::create(GetMissionsCommand::GROUP_COMPLETED)
-            ->process($processor)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);
@@ -27,13 +34,13 @@ class MissionsController
     }
 
     /**
-     * @Route("/getLastProgressMissions")
+     * @Route("/getLastProgressMissions/{nbMissions}")
      */
-    public function getLastProgressMissions(Processor $processor)
+    public function getLastProgressMissions(int $nbMissions = 5)
     {
         $result = GetLastProgressMissionsCommand
-            ::create(5)
-            ->process($processor)
+            ::create($nbMissions)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);

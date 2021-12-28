@@ -13,14 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CharactersController
 {
+    private Processor $processor;
+
+    public function __construct(Processor $processor)
+    {
+        $this->processor = $processor;
+    }
+
     /**
      * @Route("/getCharacters")
      */
-    public function getCharacters(Processor $processor)
+    public function getCharacters()
     {
         $result = GetCharactersCommand
             ::create([])
-            ->process($processor)
+            ->process($this->processor)
             ->getResult();
 
         dump(count($result->getItems()));
@@ -31,11 +38,11 @@ class CharactersController
     /**
      * @Route("/getCharacters/{clanId}")
      */
-    public function getCharactersByClan(int $clanId, Processor $processor)
+    public function getCharactersByClan(int $clanId)
     {
         $result = GetCharactersCommand
             ::create([], $clanId)
-            ->process($processor)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);

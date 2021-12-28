@@ -4,65 +4,19 @@ namespace Sdk\Model;
 
 class MissionProgress
 {
-    /**
-     * @var int
-     */
-    private $id;
-
-    /**
-     * @var int
-     */
-    private $quantity;
-
-    /**
-     * @var int
-     */
-    private $previousQuantity;
-
-    /**
-     * @var int
-     */
-    private $progressSinceLastUpdate;
-
-    /**
-     * @var int
-     */
-    private $previousPercentage;
-
-    /**
-     * @var int
-     */
-    private $percentage;
-
-    /**
-     * @var bool
-     */
-    private $isNew;
-
-    /**
-     * @var bool
-     */
-    private $isDone;
-
-    /**
-     * @var int
-     */
-    private $dateUpdate;
-
-    /**
-     * @var int
-     */
-    private $lastUpdateBattleID;
-
-    /**
-     * @var MissionPrize
-     */
-    private $missionPrize;
-
-    /**
-     * @var Mission
-     */
-    private $mission;
+    private int $id;
+    private int $quantity;
+    private int $previousQuantity;
+    private int $progressSinceLastUpdate;
+    private int $previousPercentage;
+    private int $percentage;
+    private bool $isNew;
+    private bool $isDone;
+    private int $dateUpdate;
+    private int $lastUpdateBattleID;
+    /** @var MissionPrize[] $missionPrize */
+    private array $missionPrize;
+    private array $mission;
 
     public function getId(): int
     {

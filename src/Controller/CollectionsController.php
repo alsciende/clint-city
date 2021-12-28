@@ -17,14 +17,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CollectionsController extends AbstractController
 {
+    private Processor $processor;
+
+    public function __construct(Processor $processor)
+    {
+        $this->processor = $processor;
+    }
+
     /**
-     * @Route("/getClanSummary")
+     * @Route("/getClanSummary/{clanID}")
      */
-    public function getClanSummary(Processor $processor)
+    public function getClanSummary(int $clanID = 42)
     {
         $result = GetClanSummaryCommand
-            ::create(38)
-            ->process($processor)
+            ::create($clanID)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);
@@ -34,11 +41,11 @@ class CollectionsController extends AbstractController
     /**
      * @Route("/getPresets")
      */
-    public function getPresets(Processor $processor)
+    public function getPresets()
     {
         $result = GetPresetsCommand
             ::create()
-            ->process($processor)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);
@@ -46,13 +53,13 @@ class CollectionsController extends AbstractController
     }
 
     /**
-     * @Route("/getCollectionPage")
+     * @Route("/getCollectionPage/{page}")
      */
-    public function getCollectionPage(Processor $processor)
+    public function getCollectionPage(int $page)
     {
         $result = GetCollectionPageCommand
-            ::create()
-            ->process($processor)
+            ::create(false, $page)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);
@@ -62,11 +69,11 @@ class CollectionsController extends AbstractController
     /**
      * @Route("/getCharacterVariations/{characterID}")
      */
-    public function getCharacterVariations(int $characterID, Processor $processor)
+    public function getCharacterVariations(int $characterID = 325)
     {
         $result = GetCharacterVariationsCommand
             ::create($characterID)
-            ->process($processor)
+            ->process($this->processor)
             ->getResult();
 
         dump($result);

@@ -6,101 +6,44 @@ namespace Sdk\Model;
 
 class BaseCharacter
 {
-    /** @var int */
-    protected $id;
-
-    /** @var string */
-    protected $name;
-
-    /** @var string */
-    protected $url;
-
-    /** @var int */
-    protected $clanId;
-
-    /** @var string */
-    protected $clanName;
-
-    /** @var int */
-    protected $level;
-
-    /** @var int */
-    protected $xpForLevel;
-
-    /** @var int */
-    protected $levelMin;
-
-    /** @var int */
-    protected $levelMax;
-
-    /** @var int */
-    protected $power;
-
-    /** @var int */
-    protected $damage;
-
-    /** @var string */
-    protected $rarity;
-
-    /** @var int */
-    protected $abilityId;
-
-    /** @var string */
-    protected $ability;
-
-    /** @var int */
-    protected $abilityUnlockLevel;
-
-    /** @var string */
-    protected $bonus;
-
-    /** @var bool */
-    protected $hasNightBonus;
-
-    /** @var int */
-    protected $bankPrice;
-
-    /** @var bool */
-    protected $distrib;
-
-    /** @var string */
-    protected $kind;
-
-    /** @var int */
-    protected $offerAtLevel;
-
-    /** @var int */
-    protected $isTradable;
-
-    /** @var int */
-    protected $releaseDate;
-
-    /** @var bool */
-    protected $efcBanned;
-
-    /** @var bool */
-    protected $tourneyBanned;
-
-    /** @var bool */
-    protected $tourneyT1Banned;
-
-    /** @var bool */
-    protected $tourneyT2Banned;
-
-    /** @var int */
-    protected $penalty;
-
-    /** @var string */
-    protected $altEvoPictureParam;
-
-    /** @var string */
-    protected $characterPictUrl;
-
-    /** @var string */
-    protected $characterNewPictUrl;
-
-    /** @var string */
-    protected $clanPictUrl;
+    protected int $id;
+    protected string $name;
+    protected string $url;
+    protected int $clanId;
+    protected string $clanName;
+    protected int $level;
+    protected int $xpForLevel;
+    protected int $levelMin;
+    protected int $levelMax;
+    protected int $power;
+    protected int $damage;
+    protected string $rarity;
+    protected int $abilityId;
+    protected string $ability;
+    protected int $abilityUnlockLevel;
+    protected string $bonus;
+    protected bool $hasNightBonus;
+    protected int $bankPrice;
+    protected bool $distrib;
+    protected string $kind;
+    protected int $offerAtLevel;
+    protected int $isTradable;
+    protected int $releaseDate;
+    protected bool $efcBanned;
+    protected bool $tourneyBanned;
+    protected bool $tourneyT1Banned;
+    protected bool $tourneyT2Banned;
+    protected int $penalty;
+    protected string $altEvoPictureParam;
+    protected string $characterPictUrl;
+    protected string $characterNewPictUrl;
+    protected string $clanPictUrl;
+    protected int $bankBattlepoints;
+    protected bool $efcTempBanned;
+    protected bool $efcBonusLow;
+    protected bool $efcBonusHigh;
+    protected string $collectorDate;
+    protected string $mythicDate;
 
     public function getId(): int
     {
@@ -260,5 +203,35 @@ class BaseCharacter
     public function getClanPictUrl(): string
     {
         return $this->clanPictUrl;
+    }
+
+    public function getBankBattlepoints(): int
+    {
+        return $this->bankBattlepoints;
+    }
+
+    public function isEfcTempBanned(): bool
+    {
+        return $this->efcTempBanned;
+    }
+
+    public function isEfcBonusLow(): bool
+    {
+        return $this->efcBonusLow;
+    }
+
+    public function isEfcBonusHigh(): bool
+    {
+        return $this->efcBonusHigh;
+    }
+
+    public function getCollectorDate(): string
+    {
+        return $this->collectorDate;
+    }
+
+    public function getMythicDate(): string
+    {
+        return $this->mythicDate;
     }
 }
